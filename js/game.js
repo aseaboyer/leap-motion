@@ -11,6 +11,8 @@ function onControllerConnect(){
 }
 
 controller.on( 'connect' , onControllerConnect );
+
+controller.on( 'deviceConnected' , function() {
 	console.log( 'A Leap device has been connected.' );
 });
 
