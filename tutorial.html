@@ -1,45 +1,67 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Leap Tutorial</title>
-	<link rel="stylesheet" href="css/style.css">
-	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+  <title>leap tutorial</title>
+  <style>
+	
+	  #canvas{
+		  width:	100%;
+		  height:	100%;
+	  }
+	  
+  </style>
+	
 </head>
 <body>
-	<canvas width='600' height='600' id="canvas"></canvas>
-	<button onclick="console.log( controller );">Did we do it?</button>
-	<p>https://developer.leapmotion.com/leapjs/tutorials/creating-a-connection</p>
-	<script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
-	<script>
-		var canvas = document.getElementById('canvas');
-		var c = canvas.getContext('2d');
-		var controller = new Leap.Controller();
 
-		controller.on( 'connect' , function(){
-			console.log( 'Successfully connected.' );
-		});
+  <canvas id="canvas"></canvas>
+ 
+  <script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
 
-		function onControllerConnect(){
-			console.log( 'Successfully connected.' );
-		}
+  <script>
+ 	// Pulling the Canvas DOM element into Javascript
+    var canvas = document.getElementById('canvas');
 
-		controller.on( 'connect' , onControllerConnect );
+    // Setting up the context we want to use
+    var c =  canvas.getContext('2d');
 
-		controller.on( 'deviceConnected' , function() {
-			console.log( 'A Leap device has been connected.' );
-		});
+    // Prepping our unicorn
+    var img = document.createElement('img');
+    img.src = "http://i.imgur.com/f68W5EC.png";
 
-		controller.on( 'deviceDisconnected' , function() {
-			console.log( 'A Leap device has been disconnected.' );
-		});
+    // Creating our leap controller
+    var controller = new Leap.Controller();
 
-		controller.on( 'ready' , function(){
-			/*var img = document.createElement('img');
-			img.src = "img/unicorn1.png";
-			c.drawImage( img , 0 , 0 );*/
-			console.log( "WE DID IT!" );
-		});
-	</script>
+    // Proving that the websocket is open
+    controller.on( 'connect' , function(){
+
+      console.log( 'Successfully connected.' );
+
+    });
+
+    // Proving that a device can be connected
+    controller.on( 'deviceConnected' , function() {
+
+      console.log('A Leap device has been connected.');
+ 
+    });
+
+    // And that it can be disconnected
+    controller.on( 'deviceDisconnected' , function() {
+
+      console.log( 'A Leap device has been disconnected.' );
+
+    });
+
+    // When the controller is ready, spawn the unicorn!
+    controller.on( 'ready' , function(){
+
+      c.drawImage( img , 0 , 0 );
+     
+    });
+	  
+	controller.connect();
+		
+  </script>
+	  
 </body>
 </html>
