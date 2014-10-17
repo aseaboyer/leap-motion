@@ -17,7 +17,6 @@
 <body>
 
   <canvas id="canvas"></canvas>
- <button onclick="controller.ready">Did we do it?</button>
   <script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
 
   <script>
@@ -38,6 +37,7 @@
     controller.on( 'connect' , function(){
 
       console.log( 'Successfully connected.' );
+	  controller.ready();
 
     });
 
