@@ -187,7 +187,8 @@
         c.fill();
 
       }
-	  if ( frame.hands[0] ) { console.log( frame.hands[0] ); }
+	  if ( frame.hands[0] && frame.hands[1] ) { console.log( frame.hands[0].palmPosition + " - " + frame.hands[0].palmPosition ); }
+	  else if ( frame.hands[0] ) { console.log( frame.hands[0].palmPosition ); }
     
     });
 
