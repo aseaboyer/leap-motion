@@ -42,7 +42,7 @@
 				
 				
 				//console.log( "Hand Distance = " + this.handDistance.current );
-				console.log( "Hand 0 tilt = " + hands[0].fingers );//this.tilt.left );
+				console.log( "Hand 0 tilt = " + hands[0].yaw() );//this.tilt.left );
 				
 			} else if ( hands[0] ) { // use the pinky + thumb distance
 			//	console.log( "One hand: " + hands[0].stabilizedPalmPosition );
@@ -53,8 +53,6 @@
 		//	this.kiteTilt( left, right );
 		},
 		v3Distance: function ( a, b ) {
-		//	var d = SquareRootOf((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) + (z1-z2)*(z1-z2));
-		//	console.log( "D1: " + ( (a[0]-b[0])*(a[0]-b[0]) ) + " + " + ( (a[1]-b[1])*(a[1]-b[1]) ) + " + " + ( (a[2]-b[2])*(a[2]-b[2]) ) );
 			return Math.sqrt( ( (a[0]-b[0])*(a[0]-b[0]) ) + ((a[1]-b[1])*(a[1]-b[1])) + ((a[2]-b[2])*(a[2]-b[2])) );
 		},
 		handTilt: function ( right ) {
