@@ -39,10 +39,8 @@
 				if ( diff < this.handDistance.min ) { this.handDistance.current = this.handDistance.min; } else
 				{ this.handDistance.current = diff; }
 				
-				// wrap this into a foreach and get averages
-				console.log( hands[0].stabilizedPalmPosition[1] + " vs " + hands[1].stabilizedPalmPosition[1] ); // how do we check left/right so we know which is higher
-				
-				// a better option would likely just be to compare the y height of the palms
+				//console.log( hands[0].stabilizedPalmPosition[1] + " vs " + hands[1].stabilizedPalmPosition[1] ); // how do we check left/right so we know which is higher
+				console.log( hands[0].isLeft() );
 				
 			} else if ( hands[0] ) { // use the pinky + thumb distance
 			//	console.log( "One hand: " + hands[0].stabilizedPalmPosition );
