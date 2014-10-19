@@ -37,7 +37,9 @@
 			right: 0,
 			diff: 0,
 			set: function ( left, right ) {
-				this.diff = left.stabilizedPalmPosition[1] - right.stabilizedPalmPosition[1];
+				this.left = left.stabilizedPalmPosition[1];
+				this.right = right.stabilizedPalmPosition[1];
+				this.diff = this.left - this.right;
 				return this.diff;
 			},
 		},
