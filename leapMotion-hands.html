@@ -34,15 +34,29 @@
 		},
 		update: function ( hands ) {
 			if ( hands[0] && hands[1] ) { // use the palm distance
-				var diff = this.v3Distance( hands[0].stabilizedPalmPosition, hands[1].stabilizedPalmPosition );
+				
+				var h: {
+					left: {},
+					right: {}
+				};
+				
+				if( hands[0].stabilizedPalmPosition[0] < hands[1].stabilizedPalmPosition[0] ) {
+					h.left = hands[0];
+					h.right = hands[1];
+				} else {
+					h.left = hands[1];
+					h.right = hands[0];
+				}
+				
+				var diff = this.v3Distance( h.left.stabilizedPalmPosition, h.right.stabilizedPalmPosition );
 				if ( diff > this.handDistance.max ) { this.handDistance.current = this.handDistance.max; } else
 				if ( diff < this.handDistance.min ) { this.handDistance.current = this.handDistance.min; } else
 				{ this.handDistance.current = diff; }
 				
-				//console.log( hands[0].stabilizedPalmPosition[1] + " vs " + hands[1].stabilizedPalmPosition[1] ); // how do we check left/right so we know which is higher
-				//console.log( hands[0].isLeft() );
+				var t = this.handTilt( h.left, h.right );
+				console.log( h.left );
 				
-			} else if ( hands[0] ) { // use the pinky + thumb distance
+			} else if ( hands[0] ) { // use the pinky + thumb distance and y offsets
 			//	console.log( "One hand: " + hands[0].stabilizedPalmPosition );
 			}
 		
@@ -53,8 +67,8 @@
 		v3Distance: function ( a, b ) {
 			return Math.sqrt( ( (a[0]-b[0])*(a[0]-b[0]) ) + ((a[1]-b[1])*(a[1]-b[1])) + ((a[2]-b[2])*(a[2]-b[2])) );
 		},
-		handTilt: function ( right ) {
-		
+		handTilt: function ( left, right ) {
+			
 		},
 		brakingDistance: function ( left, right ) {
 		
@@ -138,7 +152,7 @@
 
         // For each hand we define it
         var hand = frame.hands[i];
-			console.log( hand.isLeft())
+
         // and get its position, so that it can be passed through
         // for drawing the connections
         var handPos = leapToScene( frame , hand.palmPosition );
