@@ -50,7 +50,7 @@
 				{ this.handDistance.current = diff; }
 				
 				var t = this.handTilt( h.left, h.right );
-				console.log( h.left );
+				console.log( "Hand diff = " + t );
 				
 			} else if ( hands[0] ) { // use the pinky + thumb distance and y offsets
 			//	console.log( "One hand: " + hands[0].stabilizedPalmPosition );
@@ -64,7 +64,7 @@
 			return Math.sqrt( ( (a[0]-b[0])*(a[0]-b[0]) ) + ((a[1]-b[1])*(a[1]-b[1])) + ((a[2]-b[2])*(a[2]-b[2])) );
 		},
 		handTilt: function ( left, right ) {
-			
+			return left.stabilizedPalmPosition[1] - right.stabilizedPalmPosition[1];
 		},
 		brakingDistance: function ( left, right ) {
 		
