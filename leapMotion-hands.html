@@ -36,11 +36,11 @@
 		},
 		update: function ( hands ) {
 			if ( hands[0] && hands[1] ) {
-				var handDistance = this.v3Distance( hands[0].palmPosition, hands[0].palmPosition );
-				console.log( "Two hands: " + hands[0].palmPosition + " - " + hands[0].palmPosition + " Distance = " + handDistance );
+				var handDistance = this.v3Distance( hands[0].stabilizedPalmPosition, hands[0].stabilizedPalmPosition );
+				console.log( "Two hands: " + hands[0].stabilizedPalmPosition + " - " + hands[0].stabilizedPalmPosition + " Distance = " + handDistance );
 				
 			} else if ( hands[0] ) {
-				console.log( "One hand: " + hands[0].palmPosition );
+				console.log( "One hand: " + hands[0].stabilizedPalmPosition );
 			}
 		
 		//	console.log( left );
@@ -49,7 +49,8 @@
 		},
 		v3Distance: function ( d1, d2 ) {
 		//	var d = SquareRootOf((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) + (z1-z2)*(z1-z2));
-			return Math.sqrt( (d1[0]-d2[0])*(d1[0]-d2[0]) + (d1[1]-d2[1])*(d1[1]-d2[1]) + (d1[2]-d2[2])*(d1[2]-d2[2]) );
+			console.log( "Get dist on: " + d1[0] + " -- " + d2[0] );
+			return Math.sqrt( ( (d1[0]-d2[0])*(d1[0]-d2[0]) ) + ((d1[1]-d2[1])*(d1[1]-d2[1])) + ((d1[2]-d2[2])*(d1[2]-d2[2])) );
 		},
 	};
 	
