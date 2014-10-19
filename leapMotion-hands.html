@@ -35,9 +35,17 @@
 		
 		},
 		update: function ( left, right ) {
+			if ( frame.hands[0] && frame.hands[1] ) {
+				var handDistance = frame.hands[0].palmPosition - frame.hands[0].palmPosition;
+				console.log( "Two hands: " + frame.hands[0].palmPosition + " - " + frame.hands[0].palmPosition + " Distance = " + handDistance );
+				
+			} else if ( frame.hands[0] ) {
+				console.log( "One hand: " + frame.hands[0].palmPosition );
+			}
+		
 		//	console.log( left );
-			this.brakingDistance( left, right );
-			this.kiteTilt( left, right );
+		//	this.brakingDistance( left, right );
+		//	this.kiteTilt( left, right );
 		},
 	};
 	
@@ -187,9 +195,9 @@
         c.fill();
 
       }
-	  if ( frame.hands[0] && frame.hands[1] ) { console.log( frame.hands[0].palmPosition + " - " + frame.hands[0].palmPosition ); }
-	  else if ( frame.hands[0] ) { console.log( frame.hands[0].palmPosition ); }
-    
+	  
+	  handInfo.update( frame.hands[0], frame.hands[1] );
+	  
     });
 
     // Get frames rolling by connecting the controller
