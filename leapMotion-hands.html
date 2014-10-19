@@ -27,16 +27,16 @@
 			min: 50,
 			max: 250,
 		//	current: 0,
-			set: function () {
-				this.diff = left.stabilizedPalmPosition[1] - right.stabilizedPalmPosition[1];
-				return this.diff;
+			set: function ( left, right ) {
+			//	this.diff = left.stabilizedPalmPosition[1] - right.stabilizedPalmPosition[1];
+			//	return this.diff;
 			},
 		},
 		tilt: {
 			left: 0,
 			right: 0,
 			diff: 0,
-			set: function () {
+			set: function ( left, right ) {
 				this.diff = left.stabilizedPalmPosition[1] - right.stabilizedPalmPosition[1];
 				return this.diff;
 			},
