@@ -34,11 +34,7 @@
 		},
 		update: function ( hands ) {
 			if ( hands[0] && hands[1] ) { // use the palm distance
-				
-				var h: {
-					left: {},
-					right: {}
-				};
+				var h = {};
 				
 				if( hands[0].stabilizedPalmPosition[0] < hands[1].stabilizedPalmPosition[0] ) {
 					h.left = hands[0];
