@@ -36,7 +36,7 @@
 		},
 		update: function ( hands ) {
 			if ( hands[0] && hands[1] ) {
-				var handDistance = this.v3Distance( hands[0].palmPosition, frame.hands[0].palmPosition );
+				var handDistance = this.v3Distance( hands[0].palmPosition, hands[0].palmPosition );
 				console.log( "Two hands: " + hands[0].palmPosition + " - " + hands[0].palmPosition + " Distance = " + handDistance );
 				
 			} else if ( hands[0] ) {
