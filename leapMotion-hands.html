@@ -23,7 +23,11 @@
     var canvas = document.getElementById('canvas');
 
 	var handInfo = {
-		handDistance: 0,
+		handDistance: {
+			min: 50,
+			max: 250,
+			current: 0
+		},
 		tilt: {
 			left: 0,
 			right: 0,
@@ -36,11 +40,15 @@
 		},
 		update: function ( hands ) {
 			if ( hands[0] && hands[1] ) {
-				var handDistance = this.v3Distance( hands[0].stabilizedPalmPosition, hands[1].stabilizedPalmPosition );
-				console.log( "Two hands: " + hands[0].stabilizedPalmPosition + " - " + hands[1].stabilizedPalmPosition + " Distance = " + handDistance );
+				var diff = this.v3Distance( hands[0].stabilizedPalmPosition, hands[1].stabilizedPalmPosition );
+				if ( diff > this.handDistance.max ) { this.handDistance.current = this.handDistance.max; } else
+				if ( diff < this.handDistance.min ) { this.handDistance.current = this.handDistance.min; } else
+				{ this.handDistance.current = diff; }
+				
+				console.log( "Hand Distance = " + this.handDistance.current );
 				
 			} else if ( hands[0] ) {
-				console.log( "One hand: " + hands[0].stabilizedPalmPosition );
+			//	console.log( "One hand: " + hands[0].stabilizedPalmPosition );
 			}
 		
 		//	console.log( left );
