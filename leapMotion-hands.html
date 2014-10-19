@@ -40,7 +40,7 @@
 				{ this.handDistance.current = diff; }
 				
 				//console.log( hands[0].stabilizedPalmPosition[1] + " vs " + hands[1].stabilizedPalmPosition[1] ); // how do we check left/right so we know which is higher
-				console.log( hands[0].isLeft() );
+				//console.log( hands[0].isLeft() );
 				
 			} else if ( hands[0] ) { // use the pinky + thumb distance
 			//	console.log( "One hand: " + hands[0].stabilizedPalmPosition );
@@ -138,7 +138,7 @@
 
         // For each hand we define it
         var hand = frame.hands[i];
-
+			console.log( hand.isLeft())
         // and get its position, so that it can be passed through
         // for drawing the connections
         var handPos = leapToScene( frame , hand.palmPosition );
