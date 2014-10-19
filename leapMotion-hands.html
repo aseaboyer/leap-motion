@@ -26,11 +26,16 @@
 		handDistance: {
 			min: 50,
 			max: 250,
-			current: 0
+		//	current: 0
 		},
 		tilt: {
 			left: 0,
 			right: 0,
+			diff: 0,
+		},
+		controls: {
+			speed: ,
+			angle: ,
 		},
 		update: function ( hands ) {
 			if ( hands[0] && hands[1] ) { // use the palm distance
@@ -45,12 +50,12 @@
 				}
 				
 				var diff = this.v3Distance( h.left.stabilizedPalmPosition, h.right.stabilizedPalmPosition );
-				if ( diff > this.handDistance.max ) { this.handDistance.current = this.handDistance.max; } else
-				if ( diff < this.handDistance.min ) { this.handDistance.current = this.handDistance.min; } else
-				{ this.handDistance.current = diff; }
+				if ( diff > this.handDistance.max ) { this.controls.speed = this.handDistance.max; } else
+				if ( diff < this.handDistance.min ) { this.controls.speed = this.handDistance.min; } else
+				{ this.controls.speed = diff; }
 				
-				var t = this.handTilt( h.left, h.right );
-				console.log( "Hand diff = " + t );
+				var this.controls.angle = this.handTilt( h.left, h.right );
+				console.log( "Speed= " + this.controls.speed + " and Tilt = " + this.controls.angle );
 				
 			} else if ( hands[0] ) { // use the pinky + thumb distance and y offsets
 			//	console.log( "One hand: " + hands[0].stabilizedPalmPosition );
