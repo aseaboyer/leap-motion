@@ -40,8 +40,7 @@
 				{ this.handDistance.current = diff; }
 				
 				// wrap this into a foreach and get averages
-				var fingerYDiff = hands[0].stabilizedPalmPosition - hands[0].fingers[0].stabilizedTipPosition;
-				console.log( fingerYDiff );
+				console.log( hands[0].stabilizedPalmPosition[1] + " vs " + hands[1].stabilizedPalmPosition[1] ); // how do we check left/right so we know which is higher
 				
 				// a better option would likely just be to compare the y height of the palms
 				
