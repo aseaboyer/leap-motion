@@ -34,13 +34,13 @@
 		kiteTilt: function ( left, right ) {
 		
 		},
-		update: function ( left, right ) {
-			if ( frame.hands[0] && frame.hands[1] ) {
-				var handDistance = frame.hands[0].palmPosition - frame.hands[0].palmPosition;
-				console.log( "Two hands: " + frame.hands[0].palmPosition + " - " + frame.hands[0].palmPosition + " Distance = " + handDistance );
+		update: function ( hands ) {
+			if ( hands[0] && hands[1] ) {
+				var handDistance = hands[0].palmPosition - frame.hands[0].palmPosition;
+				console.log( "Two hands: " + hands[0].palmPosition + " - " + hands[0].palmPosition + " Distance = " + handDistance );
 				
-			} else if ( frame.hands[0] ) {
-				console.log( "One hand: " + frame.hands[0].palmPosition );
+			} else if ( hands[0] ) {
+				console.log( "One hand: " + hands[0].palmPosition );
 			}
 		
 		//	console.log( left );
@@ -196,7 +196,7 @@
 
       }
 	  
-	  handInfo.update( frame.hands[0], frame.hands[1] );
+	  handInfo.update( frame.hands );
 	  
     });
 
