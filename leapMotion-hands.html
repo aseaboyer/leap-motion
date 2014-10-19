@@ -40,7 +40,7 @@
 				{ this.handDistance.current = diff; }
 				
 				// wrap this into a foreach and get averages
-				var fingerYDiff = hands[0].stabilizedPalmPosition[1] - hands[0].fingers[0].stabalizedTipPosition[1];
+				var fingerYDiff = hands[0].stabilizedPalmPosition - hands[0].fingers[0].stabilizedTipPosition;
 				console.log( fingerYDiff );
 				
 				// a better option would likely just be to compare the y height of the palms
