@@ -49,6 +49,10 @@
 		},
 		update: function ( c, hands ) {
 			if ( hands[0] && hands[1] ) { // use the palm distance
+				
+				this.drawHand( c, hands[0].stabilizedPalmPosition);
+				this.drawHand( c, hands[1].stabilizedPalmPosition);
+				
 				var h = {};
 				
 				if( hands[0].stabilizedPalmPosition[0] < hands[1].stabilizedPalmPosition[0] ) {
@@ -67,8 +71,7 @@
 				this.controls.angle = this.tilt.set( h.left, h.right );
 				//console.log( "Speed= " + this.controls.speed + " and Tilt = " + this.controls.angle );
 				
-				this.drawHand( c, hands[0].stabilizedPalmPosition);
-				this.drawHand( c, hands[1].stabilizedPalmPosition);
+				
 				
 			} else if ( hands[0] ) { // use the pinky + thumb distance and y offsets
 			//	console.log( "One hand: " + hands[0].stabilizedPalmPosition );
@@ -239,7 +242,7 @@
         c.closePath();
         c.fill();
 */
-		//handInfo.drawHand( c, handPos );
+	//	handInfo.drawHand( c, handPos );
 				
       }
 	  
