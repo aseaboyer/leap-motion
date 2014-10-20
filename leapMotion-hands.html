@@ -68,8 +68,8 @@
 				this.controls.angle = this.tilt.set( h.left, h.right );
 				//console.log( "Speed= " + this.controls.speed + " and Tilt = " + this.controls.angle );
 				
-				this.drawHand( c, h.left.stabilizedPalmPosition );
-				this.drawHand( c, h.right.stabilizedPalmPosition );
+				this.drawHand( c, h.left.palmPosition );
+				this.drawHand( c, h.right.palmPosition );
 				
 			} else if ( hands[0] ) { // use the pinky + thumb distance and y offsets
 				h = hands[0];
