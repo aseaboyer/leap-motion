@@ -88,10 +88,13 @@
 		},
 		speed: 10,
 		size: 70,
-		update: function ( target ) {
+		update: function ( hand1, hand2 ) {
+		
+			var xPos = frame.hand1.palmPosition[0] - frame.hand2.palmPosition[0];
+			var yPos = frame.hand1.palmPosition[1] - frame.hand2.palmPosition[1];
 			if( target ) { // this will instead provide the target the ball will want to go to and 
-				this.x = target[0];
-				this.y = target[1];
+				this.x = xPos;
+				this.y = yPos;
 			}
 		},
 		drawBall: function ( c ) {
@@ -191,11 +194,10 @@
         c.fill();
       }
 	  
-	  if(frame.hands[0] && frame.hands[1])
-	    var xPos = frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0];
-	    var yPos = frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1];
-	    ball.drawBall( c, [xPos, yPos] );
-    
+		if(frame.hands[0] && frame.hands[1]) {
+			ball.update( frame.hands[0] && frame.hands[1] );
+			ball.drawBall( c );
+		}
     });
 
     // Get frames rolling by connecting the controller
