@@ -90,20 +90,20 @@
 		kiteTilt: function ( left, right ) {
 		
 		},
-		drawHand: function ( c, pos ) {
+		drawHand: function ( canv, pos ) {
 		
 			// Setting up the style for the fill
-			c.fillStyle = "#996633";
+			canv.fillStyle = "#996633";
 
 			// Creating the path for the hand circle
-			c.beginPath();
+			canv.beginPath();
 
 			// Draw a full circle of radius 10 at the hand position
-			c.arc(pos[0], pos[1], 40, 0, Math.PI*2);
-			c.closePath();
-			c.fill();
+			canv.arc(pos[0], pos[1], 40, 0, Math.PI*2);
+			canv.closePath();
+			canv.fill();
 			
-			console.log( "Draw hand at: " + pos );
+			console.log( "Draw hand at: " + canv );
 		}
 	};
 	
@@ -235,7 +235,7 @@
         /*
             Third draw the hand
         */
-
+/*
         // Setting up the style for the fill
         c.fillStyle = "#FF5A40";
 
@@ -246,7 +246,7 @@
         c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
         c.closePath();
         c.fill();
-
+*/
       }
 	  
 	  handInfo.update( c, frame.hands );
