@@ -67,6 +67,9 @@
 				this.controls.angle = this.tilt.set( h.left, h.right );
 				//console.log( "Speed= " + this.controls.speed + " and Tilt = " + this.controls.angle );
 				
+				this.drawHand( c, h.left.stabilizedPalmPosition);
+				this.drawHand( c, h.right.stabilizedPalmPosition);
+				
 			} else if ( hands[0] ) { // use the pinky + thumb distance and y offsets
 			//	console.log( "One hand: " + hands[0].stabilizedPalmPosition );
 			}
@@ -88,7 +91,7 @@
 		
 		},
 		drawHand: function ( canv, pos ) {
-			canv.fillStyle = "#96699"; // Setting up the style for the fill
+			canv.fillStyle = "#996699"; // Setting up the style for the fill
 			canv.beginPath(); // Creating the path for the hand circle
 			canv.arc(pos[0], pos[1], 40, 0, Math.PI*2); // Draw a full circle of radius 10 at the hand position
 			canv.closePath();
