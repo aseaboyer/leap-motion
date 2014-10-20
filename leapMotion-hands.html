@@ -49,10 +49,6 @@
 		},
 		update: function ( c, hands ) {
 			if ( hands[0] && hands[1] ) { // use the palm distance
-				
-				this.drawHand( c, hands[0].stabilizedPalmPosition);
-				this.drawHand( c, hands[1].stabilizedPalmPosition);
-				
 				var h = {};
 				
 				if( hands[0].stabilizedPalmPosition[0] < hands[1].stabilizedPalmPosition[0] ) {
@@ -242,7 +238,7 @@
         c.closePath();
         c.fill();
 */
-	//	handInfo.drawHand( c, handPos );
+		handInfo.drawHand( c, handPos );
 				
       }
 	  
