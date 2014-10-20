@@ -232,16 +232,20 @@
 
         }
 */
-			// Setting up the style for the fill
-			c.fillStyle = "#996633";
+        /*
+            Third draw the hand
+        */
 
-			// Creating the path for the hand circle
-			c.beginPath();
+        // Setting up the style for the fill
+        c.fillStyle = "#FF5A40";
 
-			// Draw a full circle of radius 10 at the hand position
-			c.arc(pos[0], pos[1], 40, 0, Math.PI*2);
-			c.closePath();
-			c.fill();
+        // Creating the path for the hand circle
+        c.beginPath();
+
+        // Draw a full circle of radius 10 at the hand position
+        c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
+        c.closePath();
+        c.fill();
 
       }
 	  
