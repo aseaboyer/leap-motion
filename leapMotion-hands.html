@@ -47,7 +47,7 @@
 			speed: 0,
 			angle: 0,
 		},
-		update: function ( hands ) {
+		update: function ( c, hands ) {
 			if ( hands[0] && hands[1] ) { // use the palm distance
 				var h = {};
 				
@@ -66,6 +66,9 @@
 				
 				this.controls.angle = this.tilt.set( h.left, h.right );
 				console.log( "Speed= " + this.controls.speed + " and Tilt = " + this.controls.angle );
+				
+				this.drawHand( c, h.left );
+				this.drawHand( c, h.right );
 				
 			} else if ( hands[0] ) { // use the pinky + thumb distance and y offsets
 			//	console.log( "One hand: " + hands[0].stabilizedPalmPosition );
@@ -87,6 +90,19 @@
 		kiteTilt: function ( left, right ) {
 		
 		},
+		drawHand: function ( c, pos ) {
+		
+			// Setting up the style for the fill
+			c.fillStyle = "#FF5A40";
+
+			// Creating the path for the hand circle
+			c.beginPath();
+
+			// Draw a full circle of radius 10 at the hand position
+			c.arc(pos[0], pos[1], 40, 0, Math.PI*2);
+			c.closePath();
+			c.fill();
+		}
 	};
 	
    	// Making sure we have the proper aspect ratio for our canvas
@@ -167,7 +183,7 @@
         // and get its position, so that it can be passed through
         // for drawing the connections
         var handPos = leapToScene( frame , hand.palmPosition );
-
+/*
         // Loop through all the fingers of the hand we are on
         for( var j = 0; j < hand.fingers.length; j++ ){
 
@@ -178,9 +194,7 @@
           var fingerPos = leapToScene( frame , finger.tipPosition );
 
         
-          /*
-              First Draw the Connection
-          */
+          // -- First Draw the Connection
 
           // Setting up the style for the stroke
           c.strokeStyle = "#FFA040";
@@ -199,9 +213,7 @@
           c.stroke();
 
 
-          /*
-              Second Draw the Finger
-          */
+          // -- Second Draw the Finger
 
           // Setting up the style for the stroke
           c.strokeStyle = "#39AECF";
@@ -217,26 +229,11 @@
           c.stroke();
 
         }
-
-
-        /*
-            Third draw the hand
-        */
-
-        // Setting up the style for the fill
-        c.fillStyle = "#FF5A40";
-
-        // Creating the path for the hand circle
-        c.beginPath();
-
-        // Draw a full circle of radius 10 at the hand position
-        c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
-        c.closePath();
-        c.fill();
+*/
 
       }
 	  
-	  handInfo.update( frame.hands );
+	  handInfo.update( c, frame.hands );
 	  
     });
 
