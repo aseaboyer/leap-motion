@@ -48,8 +48,9 @@
 			angle: 0,
 		},
 		update: function ( c, hands ) {
+			var h = {};
+			
 			if ( hands[0] && hands[1] ) { // use the palm distance
-				var h = {};
 				
 				if( hands[0].stabilizedPalmPosition[0] < hands[1].stabilizedPalmPosition[0] ) {
 					h.left = hands[0];
@@ -67,8 +68,12 @@
 				this.controls.angle = this.tilt.set( h.left, h.right );
 				//console.log( "Speed= " + this.controls.speed + " and Tilt = " + this.controls.angle );
 				
+				this.drawHand( c, h.left.stabilizedPalmPosition );
+				this.drawHand( c, h.right.stabilizedPalmPosition );
+				
 			} else if ( hands[0] ) { // use the pinky + thumb distance and y offsets
-			//	console.log( "One hand: " + hands[0].stabilizedPalmPosition );
+				h = hands[0];
+			//	console.log( "One hand: " + h.stabilizedPalmPosition ); // use the pinky and thumb positions
 			}
 		
 		//	console.log( left );
@@ -93,7 +98,7 @@
 			canv.arc(pos[0], pos[1], 40, 0, Math.PI*2); // Draw a full circle of radius 10 at the hand position
 			canv.closePath();
 			canv.fill();
-		}
+		},
 	};
 	
    	// Making sure we have the proper aspect ratio for our canvas
@@ -236,7 +241,7 @@
         c.closePath();
         c.fill();
 */
-		handInfo.drawHand( c, handPos );
+	//	handInfo.drawHand( c, handPos );
 				
       }
 	  
