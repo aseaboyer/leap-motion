@@ -88,11 +88,8 @@
 		
 		},
 		drawHand: function ( canv, pos ) {
-			
-			canv.fillStyle = "#996633"; // Setting up the style for the fill
-			
+			canv.fillStyle = "#96699"; // Setting up the style for the fill
 			canv.beginPath(); // Creating the path for the hand circle
-			
 			canv.arc(pos[0], pos[1], 40, 0, Math.PI*2); // Draw a full circle of radius 10 at the hand position
 			canv.closePath();
 			canv.fill();
