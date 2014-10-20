@@ -65,7 +65,7 @@
 				{ this.controls.speed = diff; }
 				
 				this.controls.angle = this.tilt.set( h.left, h.right );
-				console.log( "Speed= " + this.controls.speed + " and Tilt = " + this.controls.angle );
+				//console.log( "Speed= " + this.controls.speed + " and Tilt = " + this.controls.angle );
 				
 				this.drawHand( c, h.left );
 				this.drawHand( c, h.right );
@@ -102,6 +102,8 @@
 			c.arc(pos[0], pos[1], 40, 0, Math.PI*2);
 			c.closePath();
 			c.fill();
+			
+			console.log( "Draw hand at: " + pos );
 		}
 	};
 	
