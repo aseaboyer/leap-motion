@@ -91,8 +91,8 @@
 		update: function ( hand1, hand2 ) {
 			console.log( this.pos );
 		
-			var xPos = frame.hand1.palmPosition[0] - frame.hand2.palmPosition[0];
-			var yPos = frame.hand1.palmPosition[1] - frame.hand2.palmPosition[1];
+			var xPos = hand1.palmPosition[0] - hand2.palmPosition[0];
+			var yPos = hand1.palmPosition[1] - hand2.palmPosition[1];
 			if( target ) { // this will instead provide the target the ball will want to go to and 
 				this.x = xPos;
 				this.y = yPos;
