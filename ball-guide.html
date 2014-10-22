@@ -103,7 +103,7 @@
 				c.beginPath();
 
 				// Draw a full circle of radius 10 at the hand position
-				c.arc(this.target.pos.x, this.target.pos.y, this.size, 0, Math.PI*2);
+				c.arc(this.target.x, this.target.y, this.size, 0, Math.PI*2); // later this will draw the ball position (which chases the target)
 
 				c.closePath();
 				c.fill();
