@@ -103,7 +103,7 @@
 				c.beginPath();
 
 				// Draw a full circle of radius 10 at the hand position
-				c.arc( (this.target.x + (w * 0.5)), (this.target.y + (h * 0.5)), this.size, 0, Math.PI*2);
+				c.arc( (this.target.x + (w * 0.5)), (-this.target.y + (h * 0.5)), this.size, 0, Math.PI*2);
 					// later this will draw the ball position (which chases the target)
 
 				c.closePath();
@@ -137,7 +137,7 @@
 				c.beginPath();
 
 				// Draw a full circle of radius 10 at the hand position
-				c.arc( (pos.x + (w * 0.5)), (pos.y + (w * 0.5)), this.size, 0, Math.PI*2);
+				c.arc( (pos.x + (w * 0.5)), (-pos.y + (w * 0.5)), this.size, 0, Math.PI*2);
 
 				c.closePath();
 				c.fill();
@@ -145,10 +145,10 @@
 			}
 		},
 		update: function ( canv, hand1, hand2 ) {
-			var cont =  canvas.getContext('2d');
-			var w = canvas.width;
-			var h = canvas.height;
-			console.log( cont );
+			var cont = canv.getContext('2d');
+			var w = canv.width;
+			var h = canv.height;
+			//console.log( cont );
 		/*
 			var xPos = hand1.palmPosition[0] - hand2.palmPosition[0];
 			var yPos = hand1.palmPosition[1] - hand2.palmPosition[1];
