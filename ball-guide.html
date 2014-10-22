@@ -95,7 +95,7 @@
 				y: 0,
 				z: 0,
 			},
-			drawBall: function ( c ) {
+			drawBall: function ( c, w, h ) {
 				// Setting up the style for the fill
 				c.fillStyle = this.color;
 
@@ -103,7 +103,8 @@
 				c.beginPath();
 
 				// Draw a full circle of radius 10 at the hand position
-				c.arc(this.target.x, this.target.y, this.size, 0, Math.PI*2); // later this will draw the ball position (which chases the target)
+				c.arc( (this.target.x + (w * 0.5)), (this.target.y + (h * 0.5)), this.size, 0, Math.PI*2);
+					// later this will draw the ball position (which chases the target)
 
 				c.closePath();
 				c.fill();
@@ -124,11 +125,11 @@
 				y: 0,
 				z: 0,
 			},
-			drawHands: function ( c ) {
-				this.drawHand( c, this.left );
-				this.drawHand( c, this.right );
+			drawHands: function ( c, w, h ) {
+				this.drawHand( c, w, h, this.left );
+				this.drawHand( c, w, h, this.right );
 			},
-			drawHand: function ( c, pos ) {
+			drawHand: function ( c, w, h, pos ) {
 				// Setting up the style for the fill
 				c.fillStyle = this.color;
 
@@ -136,16 +137,18 @@
 				c.beginPath();
 
 				// Draw a full circle of radius 10 at the hand position
-				c.arc(pos.x, pos.y, this.size, 0, Math.PI*2);
+				c.arc( (pos.x + (w * 0.5)), (pos.y + (w * 0.5)), this.size, 0, Math.PI*2);
 
 				c.closePath();
 				c.fill();
 				//console.log( this.pos );
 			}
 		},
-		update: function ( c, hand1, hand2 ) {
-			
-			console.log( c );
+		update: function ( canv, hand1, hand2 ) {
+			var cont =  canvas.getContext('2d');
+			var w = canvas.width;
+			var h = canvas.height;
+			console.log( cont );
 		/*
 			var xPos = hand1.palmPosition[0] - hand2.palmPosition[0];
 			var yPos = hand1.palmPosition[1] - hand2.palmPosition[1];
@@ -163,8 +166,8 @@
 			this.ball.target.x = ballTargetX;
 			this.ball.target.y = ballTargetY;
 			
-			this.hands.drawHands( c );
-			this.ball.drawBall( c );
+			this.hands.drawHands( cont, w, h );
+			this.ball.drawBall( cont, w, h );
 		},
 		getHandPosition: function ( hand ) {
 		
@@ -259,7 +262,7 @@
       }
 	  
 		if(frame.hands[0] && frame.hands[1]) {
-			player.update( c, frame.hands[0], frame.hands[1] );
+			player.update( canvas, frame.hands[0], frame.hands[1] );
 		}
 	}
     });
