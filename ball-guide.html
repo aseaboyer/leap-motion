@@ -97,7 +97,7 @@
 			},
 			drawBall: function ( c ) {
 				// Setting up the style for the fill
-				c.fillStyle = "#996699";
+				c.fillStyle = this.color;
 
 				// Creating the path for the ball circle
 				c.beginPath();
@@ -113,7 +113,7 @@
 		hands: {
 			number: 2, // track if we are setting
 			size: 50,
-			color: "#996699",
+			color: "#993366",
 			left: {
 				x: 0,
 				y: 0,
@@ -130,7 +130,7 @@
 			},
 			drawHand: function ( c, pos ) {
 				// Setting up the style for the fill
-				c.fillStyle = "#996699";
+				c.fillStyle = this.color;
 
 				// Creating the path for the ball circle
 				c.beginPath();
@@ -145,7 +145,7 @@
 		},
 		update: function ( c, hand1, hand2 ) {
 			
-		//	console.log( this.pos );
+			console.log( c );
 		/*
 			var xPos = hand1.palmPosition[0] - hand2.palmPosition[0];
 			var yPos = hand1.palmPosition[1] - hand2.palmPosition[1];
@@ -157,7 +157,7 @@
 			this.hands.right.y = hand2.palmPosition[1];
 			this.hands.right.z = hand2.palmPosition[2];
 			
-			console.log( hand1.palmPosition[0] + " + " + hand2.palmPosition[0] + " = " + (hand1.palmPosition[0] + hand2.palmPosition[0]) );
+		//	console.log( hand1.palmPosition[0] + " + " + hand2.palmPosition[0] + " = " + (hand1.palmPosition[0] + hand2.palmPosition[0]) );
 			var ballTargetX = (hand1.palmPosition[0] + hand2.palmPosition[0]) * 0.5;
 			var ballTargetY = (hand1.palmPosition[1] + hand2.palmPosition[1]) * 0.5;
 			this.ball.target.x = ballTargetX;
