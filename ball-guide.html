@@ -80,35 +80,93 @@
 
     }
 	
-	var ball = {
-		pos: {
-			x: 0,
-			y: 0,
-			z: 0,
+	var player = {
+		ball: {
+			speed: 10,
+			size: 70,
+			color: "#996699",
+			pos: {
+				x: 0,
+				y: 0,
+				z: 0,
+			},
+			target: {
+				x: 0,
+				y: 0,
+				z: 0,
+			},
 		},
-		speed: 10,
-		size: 70,
-		update: function ( hand1, hand2 ) {
+		hands: {
+			number: 2, // track if we are setting
+			size: 50,
+			color: "#996699",
+			left: {
+				x: 0,
+				y: 0,
+				z: 0,
+			},
+			right: {
+				x: 0,
+				y: 0,
+				z: 0,
+			},
+		},
+		update: function ( c, hand1, hand2 ) {
+			
 		//	console.log( this.pos );
 		/*
 			var xPos = hand1.palmPosition[0] - hand2.palmPosition[0];
 			var yPos = hand1.palmPosition[1] - hand2.palmPosition[1];
 		*/
+			this.hands.left.x = hand1.palmPosition[0];
+			this.hands.left.y = hand1.palmPosition[1];
+			this.hands.left.z = hand1.palmPosition[2];
+			this.hands.right.x = hand2.palmPosition[0];
+			this.hands.right.y = hand2.palmPosition[1];
+			this.hands.right.z = hand2.palmPosition[2];
+			
 			console.log( hand1.palmPosition[0] + " + " + hand2.palmPosition[0] + " = " + (hand1.palmPosition[0] + hand2.palmPosition[0]) );
-			var xPos = (hand1.palmPosition[0] + hand2.palmPosition[0]) * 0.5;
-			var yPos = (hand1.palmPosition[1] + hand2.palmPosition[1]) * 0.5;
-			this.pos.x = xPos;
-			this.pos.y = yPos;
+			var ballTargetX = (hand1.palmPosition[0] + hand2.palmPosition[0]) * 0.5;
+			var ballTargetY = (hand1.palmPosition[1] + hand2.palmPosition[1]) * 0.5;
+			this.ball.target.pos.x = ballTargetX;
+			this.ball.target.pos.y = ballTargetY;
+			
+			this.hands( c );
+			this.drawBall( c );
+		},
+		getHandPosition: function ( hand ) {
+		
+		},
+		updateBall: function ( c ) {
+			
 		},
 		drawBall: function ( c ) {
 			// Setting up the style for the fill
 			c.fillStyle = "#996699";
 
-			// Creating the path for the hand circle
+			// Creating the path for the ball circle
 			c.beginPath();
 
 			// Draw a full circle of radius 10 at the hand position
-			c.arc(this.pos.x, this.pos.y, this.size, 0, Math.PI*2);
+			c.arc(this.ball.target.pos.x, this.ball.target.pos.y, this.ball.size, 0, Math.PI*2);
+
+			c.closePath();
+			c.fill();
+			//console.log( this.pos );
+		}
+		drawHands: function ( c ) {
+			this.drawHand( c, this.hands.left );
+			this.drawHand( c, this.hands.right );
+		},
+		drawHand: function ( c, pos ) {
+			// Setting up the style for the fill
+			c.fillStyle = "#996699";
+
+			// Creating the path for the ball circle
+			c.beginPath();
+
+			// Draw a full circle of radius 10 at the hand position
+			c.arc(pos.x, pos.y, this.hands.size, 0, Math.PI*2);
 
 			c.closePath();
 			c.fill();
@@ -185,6 +243,7 @@
 
         // *** Third draw the hand
 */
+/*
         // Setting up the style for the fill
         c.fillStyle = "#FF5A40";
 
@@ -196,11 +255,11 @@
 
         c.closePath();
         c.fill();
+*/
       }
 	  
 		if(frame.hands[0] && frame.hands[1]) {
-			ball.update( frame.hands[0], frame.hands[1] );
-			ball.drawBall( c );
+			ball.update( c, frame.hands[0], frame.hands[1] );
 		}
 	}
     });
