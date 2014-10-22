@@ -95,6 +95,20 @@
 				y: 0,
 				z: 0,
 			},
+			drawBall: function ( c ) {
+				// Setting up the style for the fill
+				c.fillStyle = "#996699";
+
+				// Creating the path for the ball circle
+				c.beginPath();
+
+				// Draw a full circle of radius 10 at the hand position
+				c.arc(this.target.pos.x, this.target.pos.y, this.size, 0, Math.PI*2);
+
+				c.closePath();
+				c.fill();
+				//console.log( this.pos );
+			}
 		},
 		hands: {
 			number: 2, // track if we are setting
@@ -110,6 +124,24 @@
 				y: 0,
 				z: 0,
 			},
+			drawHands: function ( c ) {
+				this.drawHand( c, this.left );
+				this.drawHand( c, this.right );
+			},
+			drawHand: function ( c, pos ) {
+				// Setting up the style for the fill
+				c.fillStyle = "#996699";
+
+				// Creating the path for the ball circle
+				c.beginPath();
+
+				// Draw a full circle of radius 10 at the hand position
+				c.arc(pos.x, pos.y, this.size, 0, Math.PI*2);
+
+				c.closePath();
+				c.fill();
+				//console.log( this.pos );
+			}
 		},
 		update: function ( c, hand1, hand2 ) {
 			
@@ -131,8 +163,8 @@
 			this.ball.target.x = ballTargetX;
 			this.ball.target.y = ballTargetY;
 			
-			this.hands( c );
-			this.drawBall( c );
+			this.hands.drawHands( c );
+			this.ball.drawBall( c );
 		},
 		getHandPosition: function ( hand ) {
 		
@@ -140,38 +172,6 @@
 		updateBall: function ( c ) {
 			
 		},
-		drawBall: function ( c ) {
-			// Setting up the style for the fill
-			c.fillStyle = "#996699";
-
-			// Creating the path for the ball circle
-			c.beginPath();
-
-			// Draw a full circle of radius 10 at the hand position
-			c.arc(this.ball.target.pos.x, this.ball.target.pos.y, this.ball.size, 0, Math.PI*2);
-
-			c.closePath();
-			c.fill();
-			//console.log( this.pos );
-		},
-		drawHands: function ( c ) {
-			this.drawHand( c, this.hands.left );
-			this.drawHand( c, this.hands.right );
-		},
-		drawHand: function ( c, pos ) {
-			// Setting up the style for the fill
-			c.fillStyle = "#996699";
-
-			// Creating the path for the ball circle
-			c.beginPath();
-
-			// Draw a full circle of radius 10 at the hand position
-			c.arc(pos.x, pos.y, this.hands.size, 0, Math.PI*2);
-
-			c.closePath();
-			c.fill();
-			//console.log( this.pos );
-		}
 	};
 	
 	
