@@ -114,16 +114,18 @@
 		hands: {
 			number: 2, // track if we are setting
 			size: 50,
-			color: "#993366",
+			color: "rgba(153, 51, 102, 0.4)",
 			left: {
 				x: 0,
 				y: 0,
 				z: 0,
+				code: 'L',
 			},
 			right: {
 				x: 0,
 				y: 0,
 				z: 0,
+				code: 'R',
 			},
 			drawHands: function ( c, w, h ) {
 				this.drawHand( c, w, h, this.left );
@@ -137,7 +139,7 @@
 				c.beginPath();
 
 				// Draw a full circle of radius 10 at the hand position
-				c.arc( (pos.x + (w * 0.5)), (-pos.y + (h * 0.5)), this.size, 0, Math.PI*2);
+				c.arc( (pos.x + (w * 0.5) * (pos.x * w)), (-pos.y + (h * 0.5) * (pos.y * h)), this.size, 0, Math.PI*2);
 
 				c.closePath();
 				c.fill();
@@ -153,12 +155,14 @@
 			var xPos = hand1.palmPosition[0] - hand2.palmPosition[0];
 			var yPos = hand1.palmPosition[1] - hand2.palmPosition[1];
 		*/
-			this.hands.left.x = hand1.palmPosition[0];
-			this.hands.left.y = hand1.palmPosition[1];
-			this.hands.left.z = hand1.palmPosition[2];
-			this.hands.right.x = hand2.palmPosition[0];
-			this.hands.right.y = hand2.palmPosition[1];
-			this.hands.right.z = hand2.palmPosition[2];
+			if (hand1 && hand2) {
+				this.hands.left.x = hand1.palmPosition[0];
+				this.hands.left.y = hand1.palmPosition[1];
+				this.hands.left.z = hand1.palmPosition[2];
+				this.hands.right.x = hand2.palmPosition[0];
+				this.hands.right.y = hand2.palmPosition[1];
+				this.hands.right.z = hand2.palmPosition[2];
+			}
 			
 		//	console.log( hand1.palmPosition[0] + " + " + hand2.palmPosition[0] + " = " + (hand1.palmPosition[0] + hand2.palmPosition[0]) );
 			var ballTargetX = (hand1.palmPosition[0] + hand2.palmPosition[0]) * 0.5;
