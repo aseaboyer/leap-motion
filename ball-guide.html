@@ -132,8 +132,8 @@
 				this.drawHand( c, w, h, this.right );
 			},
 			drawHand: function ( c, w, h, pos ) {
-				var useX = ( (pos.x * 2) + (w * 0.5) );
-				var useY = ( (-pos.y * 2) + (h * 0.5) );
+				var useX = pos.x + (w * 0.5);
+				var useY = -pos.y + (h * 0.5);
 				
 				c.fillStyle = this.color; // Setting up the style for the fill
 				c.beginPath(); // Creating the path for the ball circle
