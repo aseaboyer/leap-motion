@@ -139,7 +139,7 @@
 				c.beginPath();
 
 				// Draw a full circle of radius 10 at the hand position
-				c.arc( (pos.x + (w * 0.5) * (pos.x * w)), (-pos.y + (h * 0.5) * (pos.y * h)), this.size, 0, Math.PI*2);
+				c.arc( (pos.x + (w * 0.5) + (pos.x * w)), (-pos.y + (h * 0.5) + (pos.y * h)), this.size, 0, Math.PI*2);
 
 				c.closePath();
 				c.fill();
