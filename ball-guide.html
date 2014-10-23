@@ -132,18 +132,19 @@
 				this.drawHand( c, w, h, this.right );
 			},
 			drawHand: function ( c, w, h, pos ) {
-				// Setting up the style for the fill
-				c.fillStyle = this.color;
-
-				// Creating the path for the ball circle
-				c.beginPath();
+				var useX = (pos.x + (w * 0.5))
+				var useY = (-pos.y + (h * 0.5))
+				
+				c.fillStyle = this.color; // Setting up the style for the fill
+				c.beginPath(); // Creating the path for the ball circle
 
 				// Draw a full circle of radius 10 at the hand position
-				//c.arc( (pos.x + (w * 0.5)), (-pos.y + (h * 0.5)), this.size, 0, Math.PI*2); // old
-				c.arc( ((pos.x + (w * 0.5)) * (pos.x / w)), ((-pos.y + (h * 0.5)) * (pos.y / h)), this.size, 0, Math.PI*2);
+				c.arc( useX, useY, this.size, 0, Math.PI*2); // old
+				c.arc( useX, useY, this.size, 0, Math.PI*2); // old
 
 				c.closePath();
 				c.fill();
+				c.fillText( pos.code, useX, useY );
 				//console.log( this.pos );
 			}
 		},
