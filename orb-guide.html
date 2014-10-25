@@ -1,0 +1,282 @@
+<html>
+<head>
+  <style>
+	
+	  #canvas{
+		  width:	100%;
+		  height:	100%;
+	  }
+	  
+  </style>
+	
+</head>
+<body>
+
+  <canvas id="canvas"></canvas>
+
+  <script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
+
+  <script>
+ 	
+	// Get the canvas DOM element 
+    var canvas = document.getElementById('canvas');
+
+   
+   	// Making sure we have the proper aspect ratio for our canvas
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+
+    // Create the context we will use for drawing
+    var c =  canvas.getContext('2d');
+
+    // Save the canvas width and canvas height
+    // as easily accesible variables
+    var width = canvas.width;
+    var height = canvas.height;
+
+
+    /*
+      
+      The leapToScene function takes a position in leap space 
+      and converts it to the space in the canvas.
+
+      It does this by using the interaction box, in order to 
+      make sure that every part of the canvas is accesible 
+      in the interaction area of the leap
+
+    */
+    function leapToScene( frame , leapPos ){
+
+      // Gets the interaction box of the current frame
+      var iBox = frame.interactionBox;
+
+      // Gets the left border and top border of the box
+      // In order to convert the position to the proper
+      // location for the canvas
+      var left = iBox.center[0] - iBox.size[0]/2;
+      var top = iBox.center[1] + iBox.size[1]/2;
+
+      // Takes our leap coordinates, and changes them so
+      // that the origin is in the top left corner 
+      var x = leapPos[0] - left;
+      var y = leapPos[1] - top;
+
+      // Divides the position by the size of the box
+      // so that x and y values will range from 0 to 1
+      // as they lay within the interaction box
+      x /= iBox.size[0];
+      y /= iBox.size[1];
+
+      // Uses the height and width of the canvas to scale
+      // the x and y coordinates in a way that they 
+      // take up the entire canvas
+      x *= width;
+      y *= height;
+
+      // Returns the values, making sure to negate the sign 
+      // of the y coordinate, because the y basis in canvas 
+      // points down instead of up
+      return [ x , -y ];
+
+    }
+	
+	var player = {
+		orb: {
+			speed: 10,
+			size: 70,
+			color: "#996699",
+			pos: {
+				x: 0,
+				y: 0,
+				z: 0,
+			},
+			target: {
+				x: 0,
+				y: 0,
+				z: 0,
+			},
+			draworb: function ( c, w, h ) {
+				// Setting up the style for the fill
+				c.fillStyle = this.color;
+
+				// Creating the path for the orb circle
+				c.beginPath();
+
+				// Draw a full circle of radius 10 at the hand position
+				c.arc( (this.target.x + (w * 0.5)), (this.target.z + (h * 0.5)), this.size, 0, Math.PI*2);
+					// later this will draw the orb position (which chases the target)
+
+				c.closePath();
+				c.fill();
+				//console.log( this.pos );
+			}
+		},
+		hands: {
+			number: 2, // track if we are setting
+			size: 50,
+			color: "rgba(153, 51, 102, 0.4)",
+			left: {
+				x: 0,
+				y: 0,
+				z: 0,
+				code: 'L',
+			},
+			right: {
+				x: 0,
+				y: 0,
+				z: 0,
+				code: 'R',
+			},
+			drawHands: function ( c, w, h ) {
+				this.drawHand( c, w, h, this.left );
+				this.drawHand( c, w, h, this.right );
+			},
+			drawHand: function ( c, w, h, pos ) {
+				var useX = pos.x + (w * 0.5);
+				var useY = pos.z + (h * 0.5);
+				
+				c.fillStyle = this.color; // Setting up the style for the fill
+				c.beginPath(); // Creating the path for the orb circle
+
+				// Draw a full circle of radius 10 at the hand position
+				c.arc( useX, useY, this.size, 0, Math.PI*2); // old
+				c.arc( useX, useY, this.size, 0, Math.PI*2); // old
+
+				c.closePath();
+				c.fill();
+				c.fillText( pos.code, useX, useY );
+				//console.log( this.pos );
+			}
+		},
+		update: function ( canv, hand1, hand2 ) {
+			var cont = canv.getContext('2d');
+			var w = canv.width;
+			var h = canv.height;
+			//console.log( cont );
+		/*
+			var xPos = hand1.palmPosition[0] - hand2.palmPosition[0];
+			var yPos = hand1.palmPosition[1] - hand2.palmPosition[1];
+		*/
+			if (hand1 && hand2) {
+				this.hands.right.x = hand1.palmPosition[0];
+				this.hands.right.y = hand1.palmPosition[1];
+				this.hands.right.z = hand1.palmPosition[2];
+				this.hands.left.x = hand2.palmPosition[0];
+				this.hands.left.y = hand2.palmPosition[1];
+				this.hands.left.z = hand2.palmPosition[2];
+			}
+			
+		//	console.log( hand1.palmPosition[0] + " + " + hand2.palmPosition[0] + " = " + (hand1.palmPosition[0] + hand2.palmPosition[0]) );
+			var orbTargetX = (hand1.palmPosition[0] + hand2.palmPosition[0]) * 0.5;
+			var orbTargetZ = (hand1.palmPosition[2] + hand2.palmPosition[2]) * 0.5;
+			this.orb.target.x = orbTargetX;
+			this.orb.target.z = orbTargetZ;
+			
+			//this.hands.drawHands( cont, w, h );
+			//this.orb.draworb( cont, w, h );
+		},
+		getHandPosition: function ( hand ) {
+		
+		},
+		updateorb: function ( c ) {
+			
+		},
+	};
+	
+	
+
+    // Creates our Leap Controller
+    var controller = new Leap.Controller();
+
+    // Tells the controller what to do every time it sees a frame
+    controller.on( 'frame' , function(frame){
+
+	  //Clears the canvas so we are not drawing multiple frames	
+      c.clearRect( 0 , 0 , width , height );
+
+      // First we loop through all of the hands that the frame sees
+      for( var i=0; i < frame.hands.length; i++ ){
+
+        // For each hand we define it
+        var hand = frame.hands[i];
+
+        // and get its position, so that it can be passed through
+        // for drawing the connections
+        var handPos = leapToScene( frame , hand.palmPosition );
+
+        // Loop through all the fingers of the hand we are on
+        for( var j = 0; j < hand.fingers.length; j++ ){
+
+          // Define the finger we are looking at
+          var finger = hand.fingers[j];
+
+          // and get its position in Canvas
+          var fingerPos = leapToScene( frame , finger.tipPosition );
+/*
+          // *** First Draw the Connection
+
+          // Setting up the style for the stroke
+          c.strokeStyle = "#FFA040";
+          c.lineWidth = 3;
+
+          // Drawing the path
+          c.beginPath();
+
+          // Move to the hand position
+          c.moveTo(   handPos[0] ,   handPos[1] );
+
+          // Draw a line to the finger position
+          c.lineTo( fingerPos[0] , fingerPos[1] );
+
+          c.closePath();
+          c.stroke();
+
+
+          // *** Second Draw the Finger
+
+          // Setting up the style for the stroke
+          c.strokeStyle = "#39AECF";
+          c.lineWidth = 5;
+
+          // Creating the path for the finger circle
+          c.beginPath();
+
+          // Draw a full circle of radius 6 at the finger position
+          c.arc(fingerPos[0], fingerPos[1], 20, 0, Math.PI*2); 
+
+          c.closePath();
+          c.stroke();
+
+        }
+
+
+        // *** Third draw the hand
+*/
+/*
+        // Setting up the style for the fill
+        c.fillStyle = "#FF5A40";
+
+        // Creating the path for the hand circle
+        c.beginPath();
+
+        // Draw a full circle of radius 10 at the hand position
+        c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
+
+        c.closePath();
+        c.fill();
+*/
+      }
+	  
+		if(frame.hands[0] && frame.hands[1]) {
+			player.update( canvas, frame.hands[0], frame.hands[1] );
+		}
+	}
+    });
+
+    // Get frames rolling by connecting the controller
+    controller.connect();
+		
+  </script>
+	  
+</body>
+</html>
