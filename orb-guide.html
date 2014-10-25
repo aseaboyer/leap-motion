@@ -148,11 +148,14 @@
 				//console.log( this.pos );
 			}
 		},
-		update: function ( canv, hand1, hand2 ) {
+		update: function ( canv, f, hand1, hand2 ) {
 			var cont = canv.getContext('2d');
 			var w = canv.width;
 			var h = canv.height;
 			//console.log( cont );
+			
+			var orbPos = leapToScene( f , [player.orb.target.x, player.orb.target.y, player.orb.target.z] );
+			
 		/*
 			var xPos = hand1.palmPosition[0] - hand2.palmPosition[0];
 			var yPos = hand1.palmPosition[1] - hand2.palmPosition[1];
@@ -173,7 +176,7 @@
 			this.orb.target.z = orbTargetZ;
 			
 			//this.hands.drawHands( cont, w, h );
-			//this.orb.draworb( cont, w, h );
+			this.orb.draworb( cont, w, h );
 		},
 		getHandPosition: function ( hand ) {
 		
@@ -268,10 +271,12 @@
       }
 	  
 		if(frame.hands[0] && frame.hands[1]) {
-			player.update( canvas, frame.hands[0], frame.hands[1] );
+			var leftHand = leapToScene( frame , frame.hands[0] );
+			var rightHand = leapToScene( frame , frame.hands[1] );
+			player.update( canvas, frame, leftHand, rightHand );
 		}
 		
-		var orbPos = leapToScene( frame , [player.orb.target.x, player.orb.target.y, player.orb.target.z] );
+		
 	}
     });
 
