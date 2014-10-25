@@ -252,7 +252,7 @@
 
         // *** Third draw the hand
 */
-/*
+
         // Setting up the style for the fill
         c.fillStyle = "#FF5A40";
 
@@ -264,12 +264,14 @@
 
         c.closePath();
         c.fill();
-*/
+
       }
 	  
 		if(frame.hands[0] && frame.hands[1]) {
 			player.update( canvas, frame.hands[0], frame.hands[1] );
 		}
+		
+		var orbPos = leapToScene( frame , [player.orb.target.x, player.orb.target.y, player.orb.target.z] );
 	}
     });
 
