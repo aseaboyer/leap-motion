@@ -18,7 +18,7 @@ function Player( ) {
 			}
 			
 			//this.hands.drawHands( cont, w, h );
-			this.orb.draw( cont, w, h );
+			this.orb.draw( c );
 		},
 		orb: {
 			speed: 10,
