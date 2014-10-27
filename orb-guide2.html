@@ -87,6 +87,9 @@
 
 	// Tells the controller what to do every time it sees a frame
 	controller.on( 'frame' , function(frame){
+		//Clears the canvas so we are not drawing multiple frames	
+		c.clearRect( 0 , 0 , width , height );
+		
 		var  hands = [];
 		if( frame.hands.length >= 2 ) {
 			for( var i=0; i <= 2; i++ ){
@@ -105,8 +108,6 @@
 				c.fill();
 			}
 		}
-		//Clears the canvas so we are not drawing multiple frames	
-		c.clearRect( 0 , 0 , width , height );
 
 
 		//if( frame.hands.length > 1 ) {
