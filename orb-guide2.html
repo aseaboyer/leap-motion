@@ -12,12 +12,12 @@
 </head>
 <body>
 
-  <canvas id="canvas"></canvas>
+<canvas id="canvas"></canvas>
 
-  <script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
-  <script src="player.js"></script>
+<script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
+<script src="player.js"></script>
 
-  <script>
+<script>
 	
 	var player = new Player();
 	
@@ -39,14 +39,12 @@
 
 
 	/*
-
 	The leapToScene function takes a position in leap space 
 	and converts it to the space in the canvas.
 
 	It does this by using the interaction box, in order to 
 	make sure that every part of the canvas is accesible 
 	in the interaction area of the leap
-
 	*/
 	function leapToScene( frame , leapPos ){
 
@@ -82,13 +80,11 @@
 		return [ x , -y ];
 
 	}
-	  
-	 
-
+	
 	// Creates our Leap Controller
 	var controller = new Leap.Controller();
 
-	// Tells the controller what to do every time it sees a frame
+	// Tells the controller what to do every time it sees a frame - Functionally the Game Update function
 	controller.on( 'frame' , function(frame){
 		//Clears the canvas so we are not drawing multiple frames	
 		c.clearRect( 0 , 0 , width , height );
@@ -111,89 +107,14 @@
 				c.fill();
 			}
 		}
-		//player.update( c, frame, hands[0], hands[1] );
-
-		//if( frame.hands.length > 1 ) {
-		// First we loop through all of the hands that the frame sees
-		//for( var i=0; i < frame.hands.length; i++ ){
-/*
-			// For each hand we define it
-			var hand = frame.hands[i];
-
-			// and get its position, so that it can be passed through
-			// for drawing the connections
-			var handPos = leapToScene( frame , hand.palmPosition );
-*/
-			// Loop through all the fingers of the hand we are on
-			/*for( var j = 0; j < hand.fingers.length; j++ ){
-
-				// Define the finger we are looking at
-				var finger = hand.fingers[j];
-
-				// and get its position in Canvas
-				var fingerPos = leapToScene( frame , finger.tipPosition );
-
-
-				// First Draw the Connection
-
-				// Setting up the style for the stroke
-				c.strokeStyle = "#FFA040";
-				c.lineWidth = 3;
-
-				// Drawing the path
-				c.beginPath();
-
-				// Move to the hand position
-				c.moveTo(   handPos[0] ,   handPos[1] );
-
-				// Draw a line to the finger position
-				c.lineTo( fingerPos[0] , fingerPos[1] );
-
-				c.closePath();
-				c.stroke();
-
-
-				// Second Draw the Finger
-
-				// Setting up the style for the stroke
-				c.strokeStyle = "#39AECF";
-				c.lineWidth = 5;
-
-				// Creating the path for the finger circle
-				c.beginPath();
-
-				// Draw a full circle of radius 6 at the finger position
-				c.arc(fingerPos[0], fingerPos[1], 20, 0, Math.PI*2); 
-
-				c.closePath();
-				c.stroke();
-
-			}*/
-
-
-			// Third draw the hand
-			
-/*
-			// Setting up the style for the fill
-			c.fillStyle = "#FF5A40";
-
-			// Creating the path for the hand circle
-			c.beginPath();
-
-			// Draw a full circle of radius 10 at the hand position
-			c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
-
-			c.closePath();
-			c.fill();
-*/
-		//}
-
+		
+		player.update( c, frame, hands[0], hands[1] );
+		
 	});
 
 	// Get frames rolling by connecting the controller
 	controller.connect();
 		
-  </script>
-	  
+</script>
 </body>
 </html>
