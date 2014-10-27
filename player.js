@@ -42,8 +42,7 @@ function Player( ) {
 				c.beginPath();
 
 				// Draw a full circle of radius 10 at the hand position
-				c.arc( (this.target.x + (w * 0.5)), (this.target.z + (h * 0.5)), this.size, 0, Math.PI*2);
-					// later this will draw the orb position (which chases the target)
+				c.arc( this.target.x, this.target.z, this.size, 0, Math.PI*2); // ***later this will draw the orb position (which chases the target) ***
 
 				c.closePath();
 				c.fill();
