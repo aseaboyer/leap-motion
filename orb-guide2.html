@@ -87,10 +87,24 @@
 
 	// Tells the controller what to do every time it sees a frame
 	controller.on( 'frame' , function(frame){
-		var  hands = [
-			frame.hands[0],
-			frame.hands[1]
-		];
+		var  hands = [];
+		if( frame.hands.length >= 2 ) {
+			for( var i=0; i <= 2; i++ ){
+				var handPos = leapToScene( frame , frame.hands[i].palmPosition );
+				hands.push( handPos );
+				// Setting up the style for the fill
+				c.fillStyle = "#FF5A40";
+
+				// Creating the path for the hand circle
+				c.beginPath();
+
+				// Draw a full circle of radius 10 at the hand position
+				c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
+
+				c.closePath();
+				c.fill();
+			}
+		}
 		//Clears the canvas so we are not drawing multiple frames	
 		c.clearRect( 0 , 0 , width , height );
 
@@ -98,14 +112,14 @@
 		//if( frame.hands.length > 1 ) {
 		// First we loop through all of the hands that the frame sees
 		for( var i=0; i < frame.hands.length; i++ ){
-
+/*
 			// For each hand we define it
 			var hand = frame.hands[i];
 
 			// and get its position, so that it can be passed through
 			// for drawing the connections
 			var handPos = leapToScene( frame , hand.palmPosition );
-
+*/
 			// Loop through all the fingers of the hand we are on
 			/*for( var j = 0; j < hand.fingers.length; j++ ){
 
@@ -153,10 +167,9 @@
 			}*/
 
 
-			/*
-			Third draw the hand
-			*/
-
+			// Third draw the hand
+			
+/*
 			// Setting up the style for the fill
 			c.fillStyle = "#FF5A40";
 
@@ -168,7 +181,7 @@
 
 			c.closePath();
 			c.fill();
-
+*/
 		}
 
 	});
