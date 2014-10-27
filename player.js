@@ -17,7 +17,7 @@ function Player( ) {
 			this.orb.target.z = orbTargetZ;
 			
 			//this.hands.drawHands( cont, w, h );
-			this.orb.draworb( cont, w, h );
+			this.orb.draw( cont, w, h );
 		},
 		orb: {
 			speed: 10,

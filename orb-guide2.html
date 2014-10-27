@@ -93,17 +93,17 @@
 		//Clears the canvas so we are not drawing multiple frames	
 		c.clearRect( 0 , 0 , width , height );
 		
-		var  hands = [];
+		var hands = [];
 		if( frame.hands.length >= 2 ) {
-			for( var i=0; i <= 2; i++ ){
-				var handPos = leapToScene( frame , frame.hands[i].palmPosition );
+			for( var i=0; i < frame.hands.length; i++ ){
+				var hand = frame.hands[i];
+				var handPos = leapToScene( frame , hand.palmPosition );
 				hands.push( handPos );
+				
 				// Setting up the style for the fill
 				c.fillStyle = "#FF5A40";
-
 				// Creating the path for the hand circle
 				c.beginPath();
-
 				// Draw a full circle of radius 10 at the hand position
 				c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
 
@@ -111,11 +111,11 @@
 				c.fill();
 			}
 		}
-
+		//player.update( c, frame, hands[0], hands[1] );
 
 		//if( frame.hands.length > 1 ) {
 		// First we loop through all of the hands that the frame sees
-		for( var i=0; i < frame.hands.length; i++ ){
+		//for( var i=0; i < frame.hands.length; i++ ){
 /*
 			// For each hand we define it
 			var hand = frame.hands[i];
@@ -186,7 +186,7 @@
 			c.closePath();
 			c.fill();
 */
-		}
+		//}
 
 	});
 
