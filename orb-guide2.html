@@ -11,12 +11,30 @@ body {
 	padding:0;
 	width:100%;
 }
-.clickables {
+#ui-layer {
 	position:fixed;
 	margin:0;
 	padding:0;
 	top:0;
 	z-index:2;
+}
+
+#logo {
+	color:#757;
+	display:block;
+	margin:100px auto 10px;
+	padding:100px 0;
+	width:30%;
+}
+
+.btn {
+	background-color:#969;
+	border:1px solid #757;
+	color:#757;
+	display:block;
+	margin:10px auto;
+	padding:10px;
+	width:30%;
 }
 </style>
 	
@@ -26,11 +44,10 @@ body {
 <div id='ui-layer'>
 	<div id='logo'>Logo</div>
 	<div id='clickables'>
-		<span class='btn start' data-button='start'>Start</span>
-		<span class='btn restart' data-button='restart'>Re-Start</span>
-		<span class='btn resume' data-button='resume'>Resume</span>
+		<span class='btn' id='start' data-button='start'>Start</span>
+		<span class='btn' id='restart' data-button='restart'>Re-Start</span>
+		<span class='btn' id='resume' data-button='resume'>Resume</span>
 	</div>
-	<div id='logo'>Logo</div>
 </div>
 
 <script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
