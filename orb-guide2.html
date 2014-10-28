@@ -68,13 +68,27 @@ body {
 <script src="player.js"></script>
 <script>
 	var uiLayer = document.getElementById( "ui-layer" );
-		var startBTN = document.getElementById( "start" );
-		var restartBTN = document.getElementById( "restart" );
-		var resumeBTN = document.getElementById( "resume" );
-		
+	var startBTN = document.getElementById( "start" );
+	var restartBTN = document.getElementById( "restart" );
+	var resumeBTN = document.getElementById( "resume" );
+	
 	var player = new Player();
-	var game = new Game( startBTN, restartBTN, resumeBTN );
+	var game = new Game( uiLayer, startBTN, restartBTN, resumeBTN );
 	game.toggleButtons( player.score );
+	startBTN.addEventListener("click", function(){
+		player.resetScore();
+		player.paused = false;
+		game.changeStatus( player.paused );
+	}, false);
+	restartBTN.addEventListener("click", function(){
+		player.resetScore();
+		player.paused = false;
+		game.changeStatus( player.paused );
+	}, false);
+	resumeBTN.addEventListener("click", function(){
+		player.paused = false;
+		game.changeStatus( player.paused );
+	}, false);
 	
 	
 	// Get the canvas DOM element 
