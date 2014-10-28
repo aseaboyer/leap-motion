@@ -156,7 +156,10 @@ body {
 
 	// Tells the controller what to do every time it sees a frame - Functionally the Game Update function
 	controller.on( 'frame' , function(frame){
-		//Clears the canvas so we are not drawing multiple frames	
+		c.fillStyle = '#ffffff';
+		if( player.paused ) {
+			c.fillStyle = '#999999";
+		}
 		c.clearRect( 0 , 0 , width , height );
 		
 		var hands = [];
