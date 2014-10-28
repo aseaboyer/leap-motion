@@ -26,3 +26,27 @@ controller.on( 'ready' , function(){
 	c.drawImage( img , 0 , 0 );*/
 	console.log( "WE DID IT!" );
 });
+
+function Player( stbtn, rstbtn, rsmbtn ) {
+	return {
+		startBTN: stbtn,
+		restartBTN: rstbtn,
+		resumeBTN: rsmbtn,
+		set: function ( c, f, hand1, hand2 ) {
+			this.startBTN.style.display = 'block';
+			this.restartBTN.style.display = 'none';
+			this.resumeBTN.style.display = 'none';
+		},
+		toggleButtons: function ( score ) {
+			if ( score > 0 ) {
+				this.startBTN.style.display = 'block';
+				this.restartBTN.style.display = 'none';
+				this.resumeBTN.style.display = 'none';
+			} else {
+				this.startBTN.style.display = 'none';
+				this.restartBTN.style.display = 'block';
+				this.resumeBTN.style.display = 'block';
+			}
+		},
+	}
+}

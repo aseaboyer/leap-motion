@@ -67,27 +67,14 @@ body {
 <script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
 <script src="player.js"></script>
 <script>
-	var player = new Player();
-	
 	var uiLayer = document.getElementById( "ui-layer" );
 		var startBTN = document.getElementById( "start" );
 		var restartBTN = document.getElementById( "restart" );
 		var resumeBTN = document.getElementById( "resume" );
-	
-	function toggleButtons( score ) {
-		if ( score > 0 ) {
-			startBTN.style.display = 'block';
-			restartBTN.style.display = 'none';
-			resumeBTN.style.display = 'none';
-		} else {
-			startBTN.style.display = 'none';
-			restartBTN.style.display = 'block';
-			resumeBTN.style.display = 'block';
-		}
-	}
-	
-	toggleButtons( player.score );
-	
+		
+	var player = new Player();
+	var game = new Game( startBTN, restartBTN, resumeBTN );
+	game.toggleButtons( player.score );
 	
 	
 	// Get the canvas DOM element 
