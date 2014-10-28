@@ -5,6 +5,8 @@
 <style>
 #canvas {
 	height:100%;
+	margin:0;
+	padding:0;
 	width:100%;
 }
 .clickables {
@@ -18,6 +20,15 @@
 </head>
 <body>
 <canvas id="canvas"></canvas>
+<div id='ui-layer'>
+	<div id='logo'>Logo</div>
+	<div id='clickables'>
+		<span class='btn start' data-button='start'>Start</span>
+		<span class='btn restart' data-button='restart'>Re-Start</span>
+		<span class='btn resume' data-button='resume'>Resume</span>
+	</div>
+	<div id='logo'>Logo</div>
+</div>
 
 <script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
 <script src="player.js"></script>
