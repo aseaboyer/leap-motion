@@ -1,39 +1,23 @@
-<!DOCTYPE html>
 <html>
 <head>
-<title></title>
-<style>
-#canvas {
-	height:100%;
-	margin:0;
-	padding:0;
-	width:100%;
-}
-.clickables {
-	position:fixed;
-	margin:0;
-	padding:0;
-	top:0;
-	z-index:2;
-}
-</style>
+  <style>
+	
+	  #canvas{
+		  width:	100%;
+		  height:	100%;
+	  }
+	  
+  </style>
+	
 </head>
 <body>
-<div id='ui-layer'>
-	<div id='logo'>Logo</div>
-	<div id='clickables'>
-		<span class='btn start' data-button='start'>Start</span>
-		<span class='btn restart' data-button='restart'>Re-Start</span>
-		<span class='btn resume' data-button='resume'>Resume</span>
-	</div>
-	<div id='logo'>Logo</div>
-</div>
+
 <canvas id="canvas"></canvas>
 
 <script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
 <script src="player.js"></script>
+
 <script>
-	var uiLayer = document.getElementById( "ui-layer" );
 	
 	var player = new Player();
 	
@@ -124,7 +108,7 @@
 			}
 		}
 		console.log( hands );
-		//player.update( c, frame, hands[0], hands[1] ); /**** @andymakesthings - Work from here next ****/
+		//player.update( c, frame, hands[0], hands[1] );
 		
 	});
 
