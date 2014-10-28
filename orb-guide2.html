@@ -76,6 +76,7 @@ body {
 	var player = new Player();
 	var game = new GameInfo( uiLayer, startBTN, restartBTN, resumeBTN );
 	game.toggleButtons( player.score );
+	
 	startBTN.addEventListener("click", function(){
 		player.resetScore();
 		player.paused = false;
@@ -95,7 +96,6 @@ body {
 			player.togglePause();
 		}
 	}, false);
-	
 	
 	// Get the canvas DOM element 
 	var canvas = document.getElementById('canvas');
@@ -162,10 +162,12 @@ body {
 	// Tells the controller what to do every time it sees a frame - Functionally the Game Update function
 	controller.on( 'frame' , function(frame){
 		c.fillStyle = '#ffffff';
-		if( player.paused ) {
-		}
-			c.fillStyle = '#999999';
 		c.clearRect( 0 , 0 , width , height );
+		
+		if( player.paused ) {
+			c.fillStyle = '#999999';
+			c.fillRect( 0 , 0 , width , height );
+		}
 		
 		var hands = [];
 		if( frame.hands.length >= 2 ) {
