@@ -81,19 +81,23 @@ body {
 		player.resetScore();
 		player.paused = false;
 		game.changeStatus( player.paused );
+		game.toggleButtons( player.score );
 	}, false);
 	restartBTN.addEventListener("click", function(){
 		player.resetScore();
 		player.paused = false;
 		game.changeStatus( player.paused );
+		game.toggleButtons( player.score );
 	}, false);
 	resumeBTN.addEventListener("click", function(){
 		player.paused = false;
 		game.changeStatus( player.paused );
+		game.toggleButtons( player.score );
 	}, false);
 	document.addEventListener("keydown", function( e ){
 		if( e.keyCode == 80 ) {
 			player.togglePause();
+			game.toggleButtons( player.score );
 		}
 	}, false);
 	
