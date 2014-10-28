@@ -5,6 +5,9 @@ function Player( ) {
 		resetScore: function ( ) {
 			this.score = 0;
 		},
+		togglePause: function ( ) {
+			this.paused = !this.paused;
+		},
 		update: function ( c, f, hand1, hand2 ) {
 			var und;
 			if( hand1 != und && hand2 != und ) {

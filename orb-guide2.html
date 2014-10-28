@@ -60,7 +60,7 @@ body {
 	<div id='clickables'>
 		<span class='btn' id='start' data-button='start'>Start</span>
 		<span class='btn hide' id='restart' data-button='restart'>Re-Start</span>
-		<span class='btn hide' id='resume' data-button='resume'>Resume</span>
+		<span class='btn hide' id='resume' data-button='resume'>Resume (P)</span>
 	</div>
 </div>
 
@@ -89,6 +89,11 @@ body {
 	resumeBTN.addEventListener("click", function(){
 		player.paused = false;
 		game.changeStatus( player.paused );
+	}, false);
+	document.addEventListener("keydown", function( e ){
+		if( e.keyCode == 80 ) {
+			player.togglePause();
+		}
 	}, false);
 	
 	
