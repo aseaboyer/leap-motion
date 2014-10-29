@@ -38,7 +38,7 @@ function Player( ) {
 				y: 0,
 				z: 0,
 			},
-			setPosition ( x, y ) {
+			setPosition: function( x, y ) {
 				this.pos.x = x;
 				this.pos.y = y;
 			},
