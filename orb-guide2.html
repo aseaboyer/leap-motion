@@ -192,10 +192,11 @@ body {
 			}
 			
 			//console.log( hands );
-			player.update( c, hands[0], hands[1] );
+			//player.update( c, hands[0], hands[1] );
 			
 		}
 		
+		player.update( c, hands );
 		
 		if( game.paused ) {
 			c.fillStyle = 'rgba(0, 0, 0, 0.2)';

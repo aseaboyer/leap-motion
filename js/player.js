@@ -4,21 +4,23 @@ function Player( ) {
 		resetScore: function ( ) {
 			this.score = 0;
 		},
-		update: function ( c, hand1, hand2 ) {
+		update: function ( c, hands ) {
 			var und;
-			if( hand1 != und && hand2 != und ) {
-			/*	this.hands.right.x = hand1.palmPosition[0];
-				this.hands.right.y = hand1.palmPosition[1];
-				this.hands.right.z = hand1.palmPosition[2];
-				this.hands.left.x = hand2.palmPosition[0];
-				this.hands.left.y = hand2.palmPosition[1];
-				this.hands.left.z = hand2.palmPosition[2];*/
-			
-		//	console.log( hand1.palmPosition[0] + " + " + hand2.palmPosition[0] + " = " + (hand1.palmPosition[0] + hand2.palmPosition[0]) );
-				var orbTargetX = (hand1[0] + hand2[0]) * 0.5;
-				var orbTargetZ = (hand1[1] + hand2[1]) * 0.5;
-				this.orb.target.x = orbTargetX;
-				this.orb.target.z = orbTargetZ;
+			if( hands.length >= 2 ) {
+				if( hands[0] != und && hands[1] != und ) {
+				/*	this.hands.right.x = hand1.palmPosition[0];
+					this.hands.right.y = hand1.palmPosition[1];
+					this.hands.right.z = hand1.palmPosition[2];
+					this.hands.left.x = hand2.palmPosition[0];
+					this.hands.left.y = hand2.palmPosition[1];
+					this.hands.left.z = hand2.palmPosition[2];*/
+				
+			//	console.log( hand1.palmPosition[0] + " + " + hand2.palmPosition[0] + " = " + (hand1.palmPosition[0] + hand2.palmPosition[0]) );
+					var orbTargetX = (hands[0][0] + hands[1][0]) * 0.5;
+					var orbTargetZ = (hands[0][1] + hands[1][1]) * 0.5;
+					this.orb.target.x = orbTargetX;
+					this.orb.target.z = orbTargetZ;
+				}
 			}
 			
 			//this.hands.drawHands( cont, w, h );
