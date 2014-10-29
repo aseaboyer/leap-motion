@@ -170,37 +170,38 @@ body {
 
 	// Tells the controller what to do every time it sees a frame - Functionally the Game Update function
 	controller.on( 'frame' , function(frame){
-		c.fillStyle = '#ffffff';
-		c.clearRect( 0 , 0 , width , height );
+		if( !game.paused ) {
+			c.clearRect( 0 , 0 , width , height );
 		
-		var hands = [];
-		if( frame.hands.length >= 2 ) {
-			for( var i=0; i < frame.hands.length; i++ ){
-				var hand = frame.hands[i];
-				var handPos = leapToScene( frame , hand.palmPosition );
-				hands.push( handPos );
-				
-				// Setting up the style for the fill
-				c.fillStyle = "#FC9D9A";
-				// Creating the path for the hand circle
-				c.beginPath();
-				// Draw a full circle of radius 10 at the hand position
-				c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
+			var hands = [];
+			if( frame.hands.length >= 2 ) {
+				for( var i=0; i < frame.hands.length; i++ ){
+					var hand = frame.hands[i];
+					var handPos = leapToScene( frame , hand.palmPosition );
+					hands.push( handPos );
+					
+					// Setting up the style for the fill
+					c.fillStyle = "#FC9D9A";
+					// Creating the path for the hand circle
+					c.beginPath();
+					// Draw a full circle of radius 10 at the hand position
+					c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
 
-				c.closePath();
-				c.fill();
+					c.closePath();
+					c.fill();
+				}
+				
+				//console.log( hands );
+				//player.update( c, hands[0], hands[1] );
+				
 			}
 			
-			//console.log( hands );
-			//player.update( c, hands[0], hands[1] );
+			player.update( c, hands );
 			
-		}
-		
-		player.update( c, hands );
-		
-		if( game.paused ) {
-			c.fillStyle = 'rgba(0, 0, 0, 0.2)';
-			c.fillRect( 0 , 0 , width , height );
+			if( game.paused ) {
+				c.fillStyle = 'rgba(0, 0, 0, 0.2)';
+				c.fillRect( 0 , 0 , width , height );
+			}
 		}
 	});
 
