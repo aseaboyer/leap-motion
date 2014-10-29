@@ -186,10 +186,10 @@ body {
 			console.log( hands );
 		}
 		
-		//player.update( c, frame, hands[0], hands[1] ); /**** @andymakesthings - Work from here next ****/
+		player.update( c, hands[0], hands[1] ); /**** @andymakesthings - Work from here next ****/
 		
 		if( game.paused ) {
-			c.fillStyle = 'rgba(0, 0, 0, 0.3)';
+			c.fillStyle = 'rgba(0, 0, 0, 0.2)';
 			c.fillRect( 0 , 0 , width , height );
 		}
 	});
