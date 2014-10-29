@@ -22,7 +22,7 @@ function Player( ) {
 			}
 			
 			//this.hands.drawHands( cont, w, h );
-			this.orb.draw( c );
+			this.orb.draw( c ); /**** @andymakesthings - Work from here next ****/
 		},
 		orb: {
 			speed: 10,
@@ -50,13 +50,13 @@ function Player( ) {
 				c.beginPath();
 
 				// Draw a full circle of radius 10 at the hand position
-				c.arc( this.pos.x, this.pos.z, this.size, 0, Math.PI*2); // ***later this will draw the orb position (which chases the target) ***
+				c.arc( this.target.x, this.target.z, this.size, 0, Math.PI*2); // ***later this will draw the orb position (which chases the target) ***
 
 				c.closePath();
 				c.fill();
 				
 				c.fillStyle = "#F9CDAD";
-				c.fillText( game.score, this.pos.x, this.pos.z );
+				c.fillText( game.score, this.target.x, this.target.z );
 				//console.log( this.pos );
 			}
 		},
