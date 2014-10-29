@@ -4,7 +4,7 @@ function Player( ) {
 		resetScore: function ( ) {
 			this.score = 0;
 		},
-		update: function ( c, f, hand1, hand2 ) {
+		update: function ( c, hand1, hand2 ) {
 			var und;
 			if( hand1 != und && hand2 != und ) {
 			/*	this.hands.right.x = hand1.palmPosition[0];
@@ -38,6 +38,10 @@ function Player( ) {
 				y: 0,
 				z: 0,
 			},
+			setPosition ( x, y ) {
+				this.pos.x = x;
+				this.pos.y = y;
+			},
 			draw: function ( c ) {
 				// Setting up the style for the fill
 				c.fillStyle = this.color;
@@ -46,13 +50,13 @@ function Player( ) {
 				c.beginPath();
 
 				// Draw a full circle of radius 10 at the hand position
-				c.arc( this.target.x, this.target.z, this.size, 0, Math.PI*2); // ***later this will draw the orb position (which chases the target) ***
+				c.arc( this.pos.x, this.pos.z, this.size, 0, Math.PI*2); // ***later this will draw the orb position (which chases the target) ***
 
 				c.closePath();
 				c.fill();
 				
 				c.fillStyle = "#F9CDAD";
-				c.fillText( game.score, this.target.x, this.target.z );
+				c.fillText( game.score, this.pos.x, this.pos.z );
 				//console.log( this.pos );
 			}
 		},
