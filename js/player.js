@@ -22,7 +22,7 @@ function Player( ) {
 			}
 			
 			//this.hands.drawHands( cont, w, h );
-			this.orb.draw( c ); /**** @andymakesthings - Work from here next ****/
+			this.orb.draw( c, this.score ); /**** @andymakesthings - Work from here next ****/
 		},
 		orb: {
 			speed: 10,
@@ -42,7 +42,7 @@ function Player( ) {
 				this.pos.x = x;
 				this.pos.y = y;
 			},
-			draw: function ( c ) {
+			draw: function ( c, score ) {
 				// Setting up the style for the fill
 				c.fillStyle = this.color;
 
@@ -56,7 +56,7 @@ function Player( ) {
 				c.fill();
 				
 				c.fillStyle = "#F9CDAD";
-				c.fillText( this.score, this.target.x, this.target.z );
+				c.fillText( score, this.target.x, this.target.z );
 				//console.log( this.pos );
 			}
 		},
