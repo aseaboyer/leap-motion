@@ -4,6 +4,17 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 		startBTN: stbtn,
 		restartBTN: rstbtn,
 		resumeBTN: rsmbtn,
+		paused: true,
+		pause: function ( score ) {
+			this.paused = true;
+			this.toggleButtons( score );
+			this.changeStatus( );
+		},
+		togglePause: function ( score ) {
+			this.paused = !this.paused;
+			this.toggleButtons( score );
+			this.changeStatus( );
+		},
 		set: function ( c, f, hand1, hand2 ) {
 			this.startBTN.style.display = 'block';
 			this.restartBTN.style.display = 'none';
@@ -20,8 +31,8 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 				this.resumeBTN.style.display = 'none';
 			}
 		},
-		changeStatus: function ( paused ) {
-			if ( paused ) {
+		changeStatus: function ( ) {
+			if ( this.paused ) {
 				this.uiCONT.style.display = 'block';
 			} else {
 				this.uiCONT.style.display = 'none';
