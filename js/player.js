@@ -56,7 +56,7 @@ function Player( ) {
 				c.fill();
 				
 				c.fillStyle = "#F9CDAD";
-				c.fillText( game.score, this.target.x, this.target.z );
+				c.fillText( this.score, this.target.x, this.target.z );
 				//console.log( this.pos );
 			}
 		},
