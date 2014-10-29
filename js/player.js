@@ -15,8 +15,8 @@ function Player( ) {
 				this.hands.left.z = hand2.palmPosition[2];*/
 			
 		//	console.log( hand1.palmPosition[0] + " + " + hand2.palmPosition[0] + " = " + (hand1.palmPosition[0] + hand2.palmPosition[0]) );
-				var orbTargetX = (hand1.palmPosition[0] + hand2.palmPosition[0]) * 0.5;
-				var orbTargetZ = (hand1.palmPosition[1] + hand2.palmPosition[1]) * 0.5;
+				var orbTargetX = (hand1[0] + hand2[0]) * 0.5;
+				var orbTargetZ = (hand1[1] + hand2[1]) * 0.5;
 				this.orb.target.x = orbTargetX;
 				this.orb.target.z = orbTargetZ;
 			}
