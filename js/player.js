@@ -50,6 +50,9 @@ function Player( ) {
 
 				c.closePath();
 				c.fill();
+				
+				c.fillStyle = "#F9CDAD";
+				c.fillText( game.score, this.target.x, this.target.z );
 				//console.log( this.pos );
 			}
 		},
