@@ -62,6 +62,7 @@ body {
 		<span class='btn' id='start' data-button='start'>Start</span>
 		<span class='btn hide' id='restart' data-button='restart'>Re-Start</span>
 		<span class='btn hide' id='resume' data-button='resume'>Resume (P)</span>
+		<span class='btn' id='tutorial' data-button='tutorial'>?</span>
 	</div>
 </div>
 
@@ -75,6 +76,7 @@ body {
 	var startBTN = document.getElementById( "start" );
 	var restartBTN = document.getElementById( "restart" );
 	var resumeBTN = document.getElementById( "resume" );
+	var tutorialBTN = document.getElementById( "tutorial" );
 	
 	var player = new Player();
 	player.orb.setPosition( (width/2), (height/2) );
@@ -97,6 +99,9 @@ body {
 			game.togglePause();
 			game.toggleButtons( player.score );
 		}
+	}, false);
+	tutorialBTN.addEventListener("click", function(){
+		console.log( "show player how to play panel" );
 	}, false);
 	
 	// Get the canvas DOM element 
