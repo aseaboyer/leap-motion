@@ -8,6 +8,7 @@ body {
 	padding:0;
 }
 #canvas {
+	background-color:#F9CDAD;
 	height:100%;
 	margin:0;
 	padding:0;
@@ -23,7 +24,7 @@ body {
 }
 
 #logo {
-	color:#757;
+	color:#FE4365;
 	display:block;
 	font-size:3em;
 	line-height:5em;
@@ -34,9 +35,9 @@ body {
 }
 
 .btn {
-	background-color:#969;
-	border:1px solid #757;
-	color:#757;
+	background-color:#FC9D9A;
+	border:1px solid #FE4365;
+	color:#FE4365;
 	display:block;
 	font-size:1.2em;
 	margin:10px auto;
@@ -68,6 +69,8 @@ body {
 <script src="js/player.js"></script>
 <script src="js/gameInfo.js"></script>
 <script>
+	//Color Palette from: http://www.colourlovers.com/palette/629637/(%E2%97%95%E3%80%9D%E2%97%95)
+	
 	var uiLayer = document.getElementById( "ui-layer" );
 	var startBTN = document.getElementById( "start" );
 	var restartBTN = document.getElementById( "restart" );
@@ -162,11 +165,6 @@ body {
 		c.fillStyle = '#ffffff';
 		c.clearRect( 0 , 0 , width , height );
 		
-		if( game.paused ) {
-			c.fillStyle = '#999999';
-			c.fillRect( 0 , 0 , width , height );
-		}
-		
 		var hands = [];
 		if( frame.hands.length >= 2 ) {
 			for( var i=0; i < frame.hands.length; i++ ){
@@ -175,7 +173,7 @@ body {
 				hands.push( handPos );
 				
 				// Setting up the style for the fill
-				c.fillStyle = "#FF5A40";
+				c.fillStyle = "#FC9D9A";
 				// Creating the path for the hand circle
 				c.beginPath();
 				// Draw a full circle of radius 10 at the hand position
@@ -190,6 +188,10 @@ body {
 		
 		//player.update( c, frame, hands[0], hands[1] ); /**** @andymakesthings - Work from here next ****/
 		
+		if( game.paused ) {
+			c.fillStyle = 'rgba(0, 0, 0, 0.2)';
+			c.fillRect( 0 , 0 , width , height );
+		}
 	});
 
 	// Get frames rolling by connecting the controller

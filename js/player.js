@@ -27,7 +27,7 @@ function Player( ) {
 		orb: {
 			speed: 10,
 			size: 70,
-			color: "#996699",
+			color: "#FE4365",
 			pos: {
 				x: 0,
 				y: 0,
