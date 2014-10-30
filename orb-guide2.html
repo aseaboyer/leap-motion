@@ -196,22 +196,27 @@ body {
 	var controller = new Leap.Controller();
 	
 	var blocks = [];
+	blocks.push( spawnBlock() ); // create a block
 	
 	// Tells the controller what to do every time it sees a frame - Functionally the Game Update function
 	controller.on( 'frame' , function(frame){
 		if( !game.paused ) {
 			game.time.update();
 			
+			/*
+			// this method is aweful, even for just testing
 			if ( game.blockCreation.interval <= 0 ) {
 				game.blockCreation.interval = game.blockCreation.reset;
 				var newBlock = spawnBlock(); // create a block
 				blocks.push( newBlock );
 			}
+			*/
 			
 			c.clearRect( 0 , 0 , width , height );
 			
 			for( var i=0; i < blocks.length; i++ ){ // draw blocks
 				blocks[i].update( game.time.delta );
+				console.log( blocks[i] );
 			}
 			
 			var hands = [];
