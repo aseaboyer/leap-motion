@@ -71,6 +71,16 @@ body {
 <script src="js/gameInfo.js"></script>
 <script>
 	//Color Palette from: http://www.colourlovers.com/palette/629637/(%E2%97%95%E3%80%9D%E2%97%95)
+	var blocks = { /* Defaults, relative to screen size. On creation, save as rounded pixels. */
+		min: {
+			x: 0.05,
+			y: 0.05
+		},
+		max: {
+			x: 0.2,
+			y: 0.2
+		}
+	};
 	
 	var uiLayer = document.getElementById( "ui-layer" );
 	var startBTN = document.getElementById( "start" );
@@ -81,6 +91,7 @@ body {
 	var player = new Player();
 	player.orb.setPosition( (width/2), (height/2) );
 	var game = new GameInfo( uiLayer, startBTN, restartBTN, resumeBTN );
+	game.time.set();
 	game.pause( player.score );
 	
 	startBTN.addEventListener("click", function(){
@@ -173,10 +184,12 @@ body {
 	
 	// Creates our Leap Controller
 	var controller = new Leap.Controller();
-
+	
 	// Tells the controller what to do every time it sees a frame - Functionally the Game Update function
 	controller.on( 'frame' , function(frame){
 		if( !game.paused ) {
+			game.time.update();
+			
 			c.clearRect( 0 , 0 , width , height );
 		
 			var hands = [];

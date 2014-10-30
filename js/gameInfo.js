@@ -5,6 +5,29 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 		restartBTN: rstbtn,
 		resumeBTN: rsmbtn,
 		paused: true,
+		blockCreation: {
+			interval: 10, // seconds
+			last: Date.now(),
+		},
+		time: {
+			last: 0,
+			current: 0,
+			delta: 0,
+			update: function ( ) {
+				var currentTime = Date.now();
+				this.delta = currentTime - this.current;
+				this.last = this.current;
+				this.current = currentTime;
+			},
+			set: function ( ) {
+				var currentTime = Date.now();
+				this.last = currentTime;
+				this.current = currentTime;
+			}
+		},
+		update: function ( ) {
+			this.time.update();
+		}
 		pause: function ( score ) {
 			this.paused = true;
 			this.toggleButtons( score );
