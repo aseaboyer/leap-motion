@@ -10,8 +10,8 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 			last: Date.now(),
 		},
 		time: {
-			last: 0,
-			current: 0,
+			last: Date.now(),
+			current: Date.now(),
 			delta: 0,
 			update: function ( ) {
 				var currentTime = Date.now();

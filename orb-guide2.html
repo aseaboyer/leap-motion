@@ -91,7 +91,7 @@ body {
 	var player = new Player();
 	player.orb.setPosition( (width/2), (height/2) );
 	var game = new GameInfo( uiLayer, startBTN, restartBTN, resumeBTN );
-	game.time.set();
+	//game.time.set();
 	game.pause( player.score );
 	
 	startBTN.addEventListener("click", function(){
