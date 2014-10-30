@@ -20,11 +20,11 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			this.draw( c );
 		},
 		draw: function ( c ) {
-			c.rect( this.position.x,this.position.x, this.dims.x,this.dims.y );
+			c.rect( this.position.x,this.position.y, this.dims.x,this.dims.y );
 			c.fillStyle = "#c8c8a9";
 			c.fill();
 			
-			c.rect( this.position.x,this.position.x, this.dims.x,(this.dims.y - 20) );
+			c.rect( this.position.x,(this.dims.y - 20), this.dims.x,20 );
 			c.fillStyle = "#83af9b";
 			c.fill();
 		},
