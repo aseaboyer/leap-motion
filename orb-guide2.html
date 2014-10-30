@@ -131,11 +131,21 @@ body {
 	var height = canvas.height;
 
 	function spawnBlock () {									/**** @andymakesthings - Work from here next ****/
-		// pick a random speed between ranges
-		// pick a random x value to start along the top
-		// pick random x+y dims in a range
+		var minX = canvas.width * blocks.min.x; // pick random x+y dims in a range
+		var maxX = canvas.width * blocks.max.x; // pick random x+y dims in a range
+		var minY = canvas.height * blocks.min.y; // pick random x+y dims in a range
+		var maxY = canvas.height * blocks.max.y; // pick random x+y dims in a range
+		
+		var x = Math.floor((Math.random() * minX) + maxX);
+		var y = Math.floor((Math.random() * minY) + maxY);
+		var speed = x + y;
+		var start = Math.floor((Math.random() * minY) + maxY); // pick a random x value to start along the top
 		
 		// at the end, create a new interval that spawns a block? Figure out the best way to do this...
+		var newBlock = new Block();
+		
+		
+		return newBlock(;
 	}
 	
 	
@@ -189,6 +199,11 @@ body {
 	controller.on( 'frame' , function(frame){
 		if( !game.paused ) {
 			game.time.update();
+			
+			if ( game.blockCreation.interval <= 0 ) {
+				game.blockCreation.interval = game.blockCreation.reset;
+				var newBlock = spawnBlock(); // create a block
+			}
 			
 			c.clearRect( 0 , 0 , width , height );
 		

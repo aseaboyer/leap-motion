@@ -6,7 +6,8 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 		resumeBTN: rsmbtn,
 		paused: true,
 		blockCreation: {
-			interval: 10, // seconds
+			interval: 100, // seconds
+			reset: 10,
 			last: Date.now(),
 		},
 		time: {
@@ -27,6 +28,7 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 		},
 		update: function ( ) {
 			this.time.update();
+			this.blockCreation.interval -= this.time.delta;
 		},
 		pause: function ( score ) {
 			this.paused = true;
