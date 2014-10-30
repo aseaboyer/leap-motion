@@ -25,7 +25,7 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			c.fillStyle = "#c8c8a9";
 			c.fill();
 			
-			c.rect( this.position.x,(this.dims.y - 20), this.dims.x,20 );
+			c.rect( this.position.x,this.position.y, this.dims.x,(this.dims.y - 20) );
 			c.fillStyle = "#83af9b";
 			c.fill();
 		},
