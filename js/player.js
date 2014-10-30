@@ -29,7 +29,6 @@ function Player( ) {
 		orb: {
 			speed: 10,
 			size: 70,
-			color: "#FE4365",
 			pos: {
 				x: 0,
 				y: 0,
@@ -45,15 +44,10 @@ function Player( ) {
 				this.pos.y = y;
 			},
 			draw: function ( c, score ) {
-				// Setting up the style for the fill
-				c.fillStyle = this.color;
-
-				// Creating the path for the orb circle
-				c.beginPath();
-
+				c.fillStyle = "#FE4365";	// Setting up the style for the fill
+				c.beginPath();	// Creating the path for the orb circle
 				// Draw a full circle of radius 10 at the hand position
 				c.arc( this.target.x, this.target.z, this.size, 0, Math.PI*2); // ***later this will draw the orb position (which chases the target) ***
-
 				c.closePath();
 				c.fill();
 				
