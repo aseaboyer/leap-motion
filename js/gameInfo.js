@@ -27,7 +27,7 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 		},
 		update: function ( ) {
 			this.time.update();
-		}
+		},
 		pause: function ( score ) {
 			this.paused = true;
 			this.toggleButtons( score );
