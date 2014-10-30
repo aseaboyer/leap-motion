@@ -9,11 +9,12 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			x: 0,
 			y: 0
 		},
-		set: function ( dimsX, dimsY, yPos, speed ) {
+		set: function ( dimsX, dimsY, xPos, speed ) {
 			this.dims.x = dimsX;
 			this.dims.y = dimsY;
 			this.speed = speed;
-			this.position = 100; // this will need to be -dimsY
+			this.position.x = xPos;
+			this.position.y = 100; // this will need to be -dimsY
 		},
 		update: function ( c, timeMod ) {
 			// update the position
