@@ -71,7 +71,7 @@ body {
 <script src="js/gameInfo.js"></script>
 <script>
 	//Color Palette from: http://www.colourlovers.com/palette/629637/(%E2%97%95%E3%80%9D%E2%97%95)
-	var blocks = { /* Defaults, relative to screen size. On creation, save as rounded pixels. */
+	var blockData = { /* Defaults, relative to screen size. On creation, save as rounded pixels. */
 		min: {
 			x: 0.05,
 			y: 0.05
@@ -131,10 +131,10 @@ body {
 	var height = canvas.height;
 
 	function spawnBlock () {									/**** @andymakesthings - Work from here next ****/
-		var minX = canvas.width * blocks.min.x; // pick random x+y dims in a range
-		var maxX = canvas.width * blocks.max.x; // pick random x+y dims in a range
-		var minY = canvas.height * blocks.min.y; // pick random x+y dims in a range
-		var maxY = canvas.height * blocks.max.y; // pick random x+y dims in a range
+		var minX = canvas.width * blockData.min.x; // pick random x+y dims in a range
+		var maxX = canvas.width * blockData.max.x; // pick random x+y dims in a range
+		var minY = canvas.height * blockData.min.y; // pick random x+y dims in a range
+		var maxY = canvas.height * blockData.max.y; // pick random x+y dims in a range
 		
 		var x = Math.floor((Math.random() * minX) + maxX);
 		var y = Math.floor((Math.random() * minY) + maxY);
@@ -143,7 +143,7 @@ body {
 		
 		// at the end, create a new interval that spawns a block? Figure out the best way to do this...
 		var newBlock = new Block();
-		
+			newBlock.set( );
 		
 		return newBlock(;
 	}
@@ -195,6 +195,8 @@ body {
 	// Creates our Leap Controller
 	var controller = new Leap.Controller();
 	
+	var blocks = [];
+	
 	// Tells the controller what to do every time it sees a frame - Functionally the Game Update function
 	controller.on( 'frame' , function(frame){
 		if( !game.paused ) {
@@ -203,10 +205,15 @@ body {
 			if ( game.blockCreation.interval <= 0 ) {
 				game.blockCreation.interval = game.blockCreation.reset;
 				var newBlock = spawnBlock(); // create a block
+				blocks.push( newBlock );
 			}
 			
 			c.clearRect( 0 , 0 , width , height );
-		
+			
+			for( var i=0; i < blocks.length; i++ ){
+				blocks[i].update( game.time.delta );
+			}
+			
 			var hands = [];
 			if( frame.hands.length >= 2 ) {
 				for( var i=0; i < frame.hands.length; i++ ){
