@@ -200,11 +200,11 @@ body {
 	blocks.push( spawnBlock() ); // create a block
 	
 	// Tells the controller what to do every time it sees a frame - Functionally the Game Update function
-	controller.on( 'frame' , function(frame){
+	controller.on( 'frame' , function( frame ){
 		
 		// This needs to be broken out to update and draw functions
-		//update();
-		//draw();
+		//update( frame );
+		//draw( frame );
 		
 		if( !game.paused ) {
 			game.time.update();
