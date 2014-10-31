@@ -74,12 +74,12 @@ body {
 	//Color Palette from: http://www.colourlovers.com/palette/629637/(%E2%97%95%E3%80%9D%E2%97%95)
 	var blockData = { /* Defaults, relative to screen size. On creation, save as rounded pixels. */
 		min: {
-			x: 0.05,
-			y: 0.05
+			x: 0.005,
+			y: 0.01
 		},
 		max: {
-			x: 0.2,
-			y: 0.2
+			x: 0.02,
+			y: 0.02
 		}
 	};
 	
@@ -201,6 +201,11 @@ body {
 	
 	// Tells the controller what to do every time it sees a frame - Functionally the Game Update function
 	controller.on( 'frame' , function(frame){
+		
+		// This needs to be broken out to update and draw functions
+		//update();
+		//draw();
+		
 		if( !game.paused ) {
 			game.time.update();
 			
