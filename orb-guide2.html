@@ -82,8 +82,10 @@ body {
 			x: 0.2,
 			y: 0.2
 		},
-		creationInterval: 2, // in seconds
-		creationMod: 0.01, // what portion to reduce (like a %)
+		creation: {
+			base: 2, // in seconds - this is how we start
+			mod: 0.01, // what portion to reduce (like a %)
+		},
 	};
 	
 	var uiLayer = document.getElementById( "ui-layer" );
@@ -101,10 +103,12 @@ body {
 	startBTN.addEventListener("click", function(){
 		player.resetScore();
 		game.togglePause( player.score );
+		game.block.set( blockData.creation.base, blockData.creation.mod );
 	}, false);
 	restartBTN.addEventListener("click", function(){
 		player.resetScore();
 		game.togglePause( player.score );
+		game.block.set( blockData.creation.base, blockData.creation.mod );
 	}, false);
 	resumeBTN.addEventListener("click", function(){
 		game.togglePause( player.score );
@@ -212,16 +216,9 @@ body {
 		//draw( frame );
 		
 		if( !game.paused ) {
-			game.time.update();
+			var needsBlock = game.time.update();
 			
-			/*
-			// this method is aweful, even for just testing
-			if ( game.blockCreation.interval <= 0 ) {
-				game.blockCreation.interval = game.blockCreation.reset;
-				var newBlock = spawnBlock(); // create a block
-				blocks.push( newBlock );
-			}
-			*/
+			// @aseaboyer - if needsBlock == true, create a new block
 			
 			c.clearRect( 0 , 0 , width , height );
 			

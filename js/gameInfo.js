@@ -10,6 +10,18 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 			reset: 10,
 			last: Date.now(),
 		},
+		block: {
+			next: 0, // when we create the next block
+			base: 0, // keep track of the last modified creation
+			mod: 0, // the modifier we reduce by each time a block is created
+			set: function ( base, mod ) {
+				this.base = base;
+				this.next = new Date() - (base * mod); // @andymakesthings - too tired, pick up here tomorrow
+			},
+			bump: function() {
+			
+			},
+		},
 		time: {
 			last: Date.now(),
 			current: Date.now(),
@@ -29,6 +41,14 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 		update: function ( ) {
 			this.time.update();
 			this.blockCreation.interval -= this.time.delta;
+			
+			/*
+			if( this.time.current >= this.block.next) {
+				// @andymakesthings - check if we are past this.block.next, if so, return false
+				// @andymakesthings - this will be overloaded quickly, maybe we need to return an object
+			}
+			*/
+			return true;
 		},
 		pause: function ( score ) {
 			this.paused = true;

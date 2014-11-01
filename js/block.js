@@ -1,14 +1,8 @@
 function Block( uic, stbtn, rstbtn, rsmbtn ) {
 	return {
 		speed: 0,
-		dims: {
-			x: 0,
-			y: 0
-		},
-		position: {
-			x: 0,
-			y: 0
-		},
+		dims: { x: 0, y: 0 },
+		position: { x: 0, y: 0 },
 		set: function ( dimsX, dimsY, xPos, speed ) {
 			this.dims.x = dimsX;
 			this.dims.y = dimsY;
@@ -29,7 +23,7 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			}
 			return true;
 		},
-		draw: function ( c ) { // this will be more complex, drawing arrows up for sub zero and such
+		draw: function ( c ) {
 			c.beginPath();
 			c.fillStyle = "#c8c8a9";
 			c.rect( this.position.x,this.position.y, this.dims.x,this.dims.y );
@@ -41,11 +35,10 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			c.fill();
 			
 			var distFromTop = this.position.y - this.dims.y;
-			if( distFromTop > 0 ) {
-				this.drawArrow( c, distFromTop );
-			}
+			
+			if( distFromTop > 0 ) { this.drawArrow( c, distFromTop ); }
 		},
-		drawArrow: function ( c, offset ) {
+		drawArrow: function ( c, offset ) { // Arrow isn't being drawn for some reason
 			c.beginPath();
 			c.fillStyle = "#83af9b";
 			c.moveTo( this.x + (this.dims.x * 0.5), 0);
