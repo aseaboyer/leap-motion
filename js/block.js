@@ -22,6 +22,7 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 		},
 		update: function ( c, timeMod ) {
 			console.log( timeMod );
+			this.position.y += (speed * timeMod)
 			
 			// update the position
 			this.draw( c );
