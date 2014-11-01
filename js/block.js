@@ -21,10 +21,10 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			console.log( this );
 		},
 		update: function ( c, timeMod ) {
-			console.log( timeMod );
-			this.position.y += (this.speed * timeMod)
+			this.position.y += (this.speed * timeMod); // update the position
 			
-			// update the position
+			console.log( this.position.y );
+		
 			this.draw( c );
 		},
 		draw: function ( c ) { // this will be more complex, drawing arrows up for sub zero and such
