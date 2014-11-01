@@ -14,7 +14,8 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			this.dims.y = dimsY;
 			this.speed = speed;
 			this.position.x = xPos;
-			this.position.y = -(dimsX + 50); // 50 bumps
+			this.position.y = -(dimsY + 50); // 50 bumps
+			this.position.y = 100; // 50 bumps
 			
 			console.log( "Built" );
 			console.log( this );
