@@ -20,6 +20,8 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			console.log( this );
 		},
 		update: function ( c, timeMod ) {
+			console.log( timeMod );
+			
 			// update the position
 			this.draw( c );
 		},
@@ -43,7 +45,7 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			c.beginPath();
 			c.fillStyle = "#83af9b";
 			c.moveTo( this.x + (this.dims.x * 0.5), 0);
-			c.lineTo( this.x + (this.dims.x * 0.5) + offset, offset );
+			c.lineTo( this.x + (this.dims.x * 0.5) - offset, offset );
 			c.lineTo( this.x + (this.dims.x * 0.5) + offset, offset );
 			c.fill();
 		},

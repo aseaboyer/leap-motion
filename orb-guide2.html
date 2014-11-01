@@ -138,8 +138,6 @@ body {
 			minY: canvas.height * blockData.min.y, // pick random x+y dims in a range
 			maxY: canvas.height * blockData.max.y, // pick random x+y dims in a range
 		};
-		console.log( "Block Screen Mods:" );
-		console.log( modifiers );
 		
 		var x = Math.floor((Math.random() * modifiers.maxX) + modifiers.minX);
 		var y = Math.floor((Math.random() * modifiers.maxY) + modifiers.minY);
