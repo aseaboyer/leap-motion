@@ -15,6 +15,9 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			this.speed = speed;
 			this.position.x = xPos;
 			this.position.y = 100; // this will need to be -dimsY
+			
+			console.log( "Built" );
+			console.log( this );
 		},
 		update: function ( c, timeMod ) {
 			// update the position
