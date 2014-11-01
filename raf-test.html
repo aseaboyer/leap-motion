@@ -1,0 +1,147 @@
+<html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+<style>
+body {
+	font-family:'Sigmar One',sans-serif;
+	margin:0;
+	padding:0;
+}
+#canvas {
+	background-color:#F9CDAD;
+	height:100%;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+#ui-layer {
+	position:fixed;
+	margin:0;
+	padding:0;
+	top:0;
+	width:100%;
+	z-index:2;
+}
+
+#logo {
+	color:#FE4365;
+	display:block;
+	font-size:3em;
+	line-height:5em;
+	margin:0 auto;
+	padding:0;
+	text-align:center;
+	width:30%;
+}
+
+.btn {
+	background-color:#FC9D9A;
+	border:1px solid #FE4365;
+	color:#FE4365;
+	display:block;
+	font-size:1.2em;
+	margin:10px auto;
+	padding:10px;
+	text-align:center;
+	width:30%;
+}
+.btn.hide {
+	display:none;
+}
+.btn:hover {
+	background-color:#dbd;
+}
+</style>
+	
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script src="//js.leapmotion.com/0.2.0/leap.min.js"></script>
+<script>
+	// Get the canvas DOM element 
+	var canvas = document.getElementById('canvas');
+	
+	// Making sure we have the proper aspect ratio for our canvas
+	canvas.width = canvas.clientWidth;
+	canvas.height = canvas.clientHeight;
+
+	// Create the context we will use for drawing
+	var c =  canvas.getContext('2d');
+
+	// Save the canvas width and canvas height
+	// as easily accesible variables
+	var width = canvas.width;
+	var height = canvas.height;
+	
+	
+	/*
+	The leapToScene function takes a position in leap space 
+	and converts it to the space in the canvas.
+
+	It does this by using the interaction box, in order to 
+	make sure that every part of the canvas is accesible 
+	in the interaction area of the leap
+	*/
+	function leapToScene( frame , leapPos ){
+
+		// Gets the interaction box of the current frame
+		var iBox = frame.interactionBox;
+
+		// Gets the left border and top border of the box
+		// In order to convert the position to the proper
+		// location for the canvas
+		var left = iBox.center[0] - iBox.size[0]/2;
+		var top = iBox.center[1] + iBox.size[1]/2;
+
+		// Takes our leap coordinates, and changes them so
+		// that the origin is in the top left corner 
+		var x = leapPos[0] - left;
+		var y = leapPos[1] - top;
+
+		// Divides the position by the size of the box
+		// so that x and y values will range from 0 to 1
+		// as they lay within the interaction box
+		x /= iBox.size[0];
+		y /= iBox.size[1];
+
+		// Uses the height and width of the canvas to scale
+		// the x and y coordinates in a way that they 
+		// take up the entire canvas
+		x *= width;
+		y *= height;
+
+		// Returns the values, making sure to negate the sign 
+		// of the y coordinate, because the y basis in canvas 
+		// points down instead of up
+		return [ x , -y ];
+
+	}
+	
+	var controller = new Leap.Controller();	// Creates our Leap Controller
+	
+	var leapData = {};
+	controller.on( 'frame' , function( frame ){ // Tells the controller what to do every time it sees a frame
+		console.log( frame ); // update handsPosition var
+		leapData = frame;
+	}
+		
+	function init() {
+	
+	}
+	function animate() {
+		
+		requestAnimationFrame( animate );
+		
+	//	console.log( leapData.hands
+	}
+	
+	init();
+	animate();
+
+	// Get frames rolling by connecting the controller
+	controller.connect();
+		
+</script>
+</body>
+</html>
