@@ -14,7 +14,7 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			this.dims.y = dimsY;
 			this.speed = speed;
 			this.position.x = xPos;
-			this.position.y = 100; // this will need to be -dimsY
+			this.position.y = -(dimsX + 50); // 50 bumps
 			
 			console.log( "Built" );
 			console.log( this );
@@ -31,7 +31,20 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			
 			c.beginPath();
 			c.fillStyle = "#83af9b";
-			c.rect( this.position.x,this.position.y, this.dims.x,(this.dims.y - 20) );
+			c.rect( this.position.x,this.position.y, this.dims.x,(this.dims.y - 10) );
+			c.fill();
+			
+			var distFromTop = this.position.y - this.dims.y;
+			if( distFromTop > 0 ) {
+				this.drawArrow( c, distFromTop );
+			}
+		},
+		drawArrow: function ( c, offset ) {
+			c.beginPath();
+			c.fillStyle = "#83af9b";
+			c.moveTo( this.x + (this.dims.x * 0.5), 0);
+			c.lineTo( this.x + (this.dims.x * 0.5) + offset, offset );
+			c.lineTo( this.x + (this.dims.x * 0.5) + offset, offset );
 			c.fill();
 		},
 	}
