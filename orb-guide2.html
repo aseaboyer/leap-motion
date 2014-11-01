@@ -72,6 +72,7 @@ body {
 <script src="js/block.js"></script>
 <script>
 	//Color Palette from: http://www.colourlovers.com/palette/629637/(%E2%97%95%E3%80%9D%E2%97%95)
+	
 	var blockData = { /* Defaults, relative to screen size. On creation, save as rounded pixels. */
 		min: {
 			x: 0.02,
@@ -80,7 +81,9 @@ body {
 		max: {
 			x: 0.2,
 			y: 0.2
-		}
+		},
+		creationInterval: 2, // in seconds
+		creationMod: 0.01, // what portion to reduce (like a %)
 	};
 	
 	var uiLayer = document.getElementById( "ui-layer" );
@@ -141,7 +144,7 @@ body {
 		
 		var x = Math.floor((Math.random() * modifiers.maxX) + modifiers.minX);
 		var y = Math.floor((Math.random() * modifiers.maxY) + modifiers.minY);
-		var speed = (x * y) * 0.001;
+		var speed = (x * y * 2) * 0.001;
 		var start = Math.floor((Math.random() * modifiers.maxY) + modifiers.minY); // pick a random x value to start along the top
 		
 		// at the end, create a new interval that spawns a block? Figure out the best way to do this...
@@ -223,7 +226,10 @@ body {
 			c.clearRect( 0 , 0 , width , height );
 			
 			for( var i=0; i < blocks.length; i++ ){ // draw blocks
-				blocks[i].update( c, game.time.delta );
+				var isAlive = blocks[i].update( c, game.time.delta, height );
+				if( !isAlive ) {
+					console.log( "Kill this block!" );
+				}
 			}
 			
 			var hands = [];

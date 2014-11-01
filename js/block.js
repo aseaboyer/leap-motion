@@ -19,10 +19,15 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			console.log( "Built" );
 			console.log( this );
 		},
-		update: function ( c, timeMod ) {
+		update: function ( c, timeMod, screenHeight ) {
 			this.position.y += (this.speed * timeMod); // update the position
 			
 			this.draw( c );
+			
+			if( this.position.y > screenHeight ) {
+				return false;
+			}
+			return true;
 		},
 		draw: function ( c ) { // this will be more complex, drawing arrows up for sub zero and such
 			c.beginPath();
