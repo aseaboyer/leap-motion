@@ -141,7 +141,7 @@ body {
 		
 		var x = Math.floor((Math.random() * modifiers.maxX) + modifiers.minX);
 		var y = Math.floor((Math.random() * modifiers.maxY) + modifiers.minY);
-		var speed = x + y;
+		var speed = (x * y) * 0.2;
 		var start = Math.floor((Math.random() * modifiers.maxY) + modifiers.minY); // pick a random x value to start along the top
 		
 		// at the end, create a new interval that spawns a block? Figure out the best way to do this...

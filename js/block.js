@@ -1,8 +1,8 @@
 function Block( uic, stbtn, rstbtn, rsmbtn ) {
 	return {
-		speed: 100,
+		speed: 0,
 		dims: {
-			x: 100,
+			x: 0,
 			y: 0
 		},
 		position: {
@@ -14,16 +14,13 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			this.dims.y = dimsY;
 			this.speed = speed;
 			this.position.x = xPos;
-			this.position.y = -(dimsY + 50); // 50 bumps
-			this.position.y = 100; // 50 bumps
+			this.position.y = -(dimsY + 50); // 50px bump above the fold
 			
 			console.log( "Built" );
 			console.log( this );
 		},
 		update: function ( c, timeMod ) {
 			this.position.y += (this.speed * timeMod); // update the position
-			
-			console.log( this.position.y );
 		
 			this.draw( c );
 		},
