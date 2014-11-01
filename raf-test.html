@@ -120,12 +120,10 @@ body {
 	
 	var controller = new Leap.Controller();	// Creates our Leap Controller
 	
-	var leapData = {};
+	var leapData = new Array();
 	controller.on( 'frame' , function( frame ){ // Tells the controller what to do every time it sees a frame
 		//console.log( frame ); // update handsPosition var
-		leapData = {
-			hands[0],hands[1]
-		};
+		leapData = [ hands[0],hands[1] ];
 	});
 		
 	function init() {
