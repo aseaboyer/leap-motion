@@ -225,10 +225,14 @@ body {
 			
 			c.clearRect( 0 , 0 , width , height );
 			
-			for( var i=0; i < blocks.length; i++ ){ // draw blocks
-				var isAlive = blocks[i].update( c, game.time.delta, height );
-				if( !isAlive ) {
-					console.log( "Kill this block!" );
+			if( blocks.length > 0) {
+				for( var i=0; i < blocks.length; i++ ){ // draw blocks
+					var isAlive = blocks[i].update( c, game.time.delta, height );
+					if( !isAlive ) {
+						game.score++;
+						blocks.splice( i, 1 );
+						i--;
+					}
 				}
 			}
 			
