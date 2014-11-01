@@ -132,15 +132,19 @@ body {
 	var height = canvas.height;
 
 	function spawnBlock () {									/**** @andymakesthings - Work from here next ****/
-		var minX = canvas.width * blockData.min.x; // pick random x+y dims in a range
-		var maxX = canvas.width * blockData.max.x; // pick random x+y dims in a range
-		var minY = canvas.height * blockData.min.y; // pick random x+y dims in a range
-		var maxY = canvas.height * blockData.max.y; // pick random x+y dims in a range
+		var modifiers = {
+			minX: canvas.width * blockData.min.x, // pick random x+y dims in a range
+			maxX: canvas.width * blockData.max.x, // pick random x+y dims in a range
+			minY: canvas.height * blockData.min.y, // pick random x+y dims in a range
+			maxY: canvas.height * blockData.max.y, // pick random x+y dims in a range
+		};
+		console.log( "Block Screen Mods:" );
+		console.log( modifiers );
 		
-		var x = Math.floor((Math.random() * minX) + maxX);
-		var y = Math.floor((Math.random() * minY) + maxY);
+		var x = Math.floor((Math.random() * modifiers.maxX) + modifiers.minX);
+		var y = Math.floor((Math.random() * modifiers.maxY) + modifiers.minY);
 		var speed = x + y;
-		var start = Math.floor((Math.random() * minY) + maxY); // pick a random x value to start along the top
+		var start = Math.floor((Math.random() * modifiers.maxY) + modifiers.mainY); // pick a random x value to start along the top
 		
 		// at the end, create a new interval that spawns a block? Figure out the best way to do this...
 		var newBlock = new Block();
