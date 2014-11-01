@@ -16,7 +16,7 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 			delta: 0,
 			update: function ( ) {
 				var currentTime = Date.now();
-				this.delta = currentTime - this.current;
+				this.delta = (currentTime - this.current) * 0.001;
 				this.last = this.current;
 				this.current = currentTime;
 			},
