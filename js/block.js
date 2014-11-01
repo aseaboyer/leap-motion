@@ -21,7 +21,7 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 		},
 		update: function ( c, timeMod ) {
 			this.position.y += (this.speed * timeMod); // update the position
-		
+			
 			this.draw( c );
 		},
 		draw: function ( c ) { // this will be more complex, drawing arrows up for sub zero and such
