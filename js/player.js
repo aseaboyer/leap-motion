@@ -13,6 +13,7 @@ function Player( ) {
 					this.orb.target.x = orbTargetX;
 					this.orb.target.y = orbTargetY;
 					var moveOrb = this.lerp( this.orb.pos, this.orb.target, (this.orb.speed * timeDelta) );
+					console.log( "move to " + moveOrb );
 				}
 			}
 			
