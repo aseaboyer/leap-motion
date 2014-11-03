@@ -204,70 +204,82 @@ body {
 	
 	// Creates our Leap Controller
 	var controller = new Leap.Controller();
-	
 	var blocks = [];
 	blocks.push( spawnBlock() ); // create a block
+	var leapData = new Array();
 	
 	// Tells the controller what to do every time it sees a frame - Functionally the Game Update function
 	controller.on( 'frame' , function( frame ){
+		leapData = frame;
+	});
 		
-		// This needs to be broken out to update and draw functions
-		//update( frame );
-		//draw( frame );
+	function update( data ) {
+		var needsBlock = game.time.update();
 		
-		if( !game.paused ) {
-			var needsBlock = game.time.update();
-			
-			// @aseaboyer - if needsBlock == true, create a new block
-			
-			c.clearRect( 0 , 0 , width , height );
-			
-			if( blocks.length > 0) {
-				for( var i=0; i < blocks.length; i++ ){ // draw blocks
-					var isAlive = blocks[i].update( c, game.time.delta, height );
-					if( !isAlive ) {
-						player.score++;
-						blocks.splice( i, 1 );
-						i--;
-					}
+		// @aseaboyer - if needsBlock == true, create a new block
+		
+		c.clearRect( 0 , 0 , width , height );
+		
+		if( blocks.length > 0) {
+			for( var i=0; i < blocks.length; i++ ){ // draw blocks
+				var isAlive = blocks[i].update( c, game.time.delta, height );
+				if( !isAlive ) {
+					player.score++;
+					blocks.splice( i, 1 );
+					i--;
 				}
-			}
-			
-			var hands = [];
-			if( frame.hands.length >= 2 ) {
-				for( var i=0; i < frame.hands.length; i++ ){
-					var hand = frame.hands[i];
-					var handPos = leapToScene( frame , hand.palmPosition );
-					hands.push( handPos );
-					
-					// Setting up the style for the fill
-					c.fillStyle = "#FC9D9A";
-					// Creating the path for the hand circle
-					c.beginPath();
-					// Draw a full circle of radius 10 at the hand position
-					c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
-
-					c.closePath();
-					c.fill();
-				}
-				
-				//console.log( hands );
-				//player.update( c, hands[0], hands[1] );
-				
-			}
-			
-			player.update( c, hands );
-			
-			if( game.paused ) {
-				c.fillStyle = 'rgba(0, 0, 0, 0.2)';
-				c.fillRect( 0 , 0 , width , height );
 			}
 		}
-	});
-
-	// Get frames rolling by connecting the controller
-	controller.connect();
 		
+		var hands = [];
+		if( frame.hands.length >= 2 ) {
+			for( var i=0; i < frame.hands.length; i++ ){
+				var hand = frame.hands[i];
+				var handPos = leapToScene( frame , hand.palmPosition );
+				hands.push( handPos );
+				
+				// Setting up the style for the fill
+				c.fillStyle = "#FC9D9A";
+				// Creating the path for the hand circle
+				c.beginPath();
+				// Draw a full circle of radius 10 at the hand position
+				c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
+
+				c.closePath();
+				c.fill();
+			}
+			
+			//console.log( hands );
+			//player.update( c, hands[0], hands[1] );
+			
+		}
+		
+		player.update( c, hands );
+		
+		if( game.paused ) {
+			c.fillStyle = 'rgba(0, 0, 0, 0.2)';
+			c.fillRect( 0 , 0 , width , height );
+		}
+	}
+		
+	function draw( canv ) {
+	
+	}
+		
+	function init() {
+	
+	}
+	function animate() {
+		if( !game.paused ) {
+			requestAnimationFrame( animate );
+			
+			update( leapData );
+			draw( c );
+		}
+	}
+	
+	controller.connect();	// Get frames rolling by connecting the controller
+	
 </script>
 </body>
 </html>

@@ -119,6 +119,8 @@ body {
 	}
 	
 	var controller = new Leap.Controller();	// Creates our Leap Controller
+	var player;
+	var blocks = new Array();
 	
 	var leapData = new Array();
 	controller.on( 'frame' , function( frame ){ // Tells the controller what to do every time it sees a frame
@@ -135,6 +137,9 @@ body {
 		/*	var handPos = leapToScene( data , data.hand.palmPosition );
 			var f = [ data.hands[0].stabilizedPalmPosition, data.hands[1].stabilizedPalmPosition
 			console.log( f[0] + ' - ' + f[1] );*/
+			
+			// player.update; (Updates the hands and orb
+			// update all blocks
 		}
 	}
 		
