@@ -38,6 +38,7 @@ function Player( ) {
 				c.closePath();
 				c.fill();
 				
+				c.beginPath();
 				c.fillStyle = "#F9CDAD";
 				c.fillText( score, this.pos.x, this.pos.y );
 			}
