@@ -9,9 +9,9 @@ function Player( ) {
 			if( hands.length >= 2 ) {
 				if( hands[0] != und && hands[1] != und ) {
 					var orbTargetX = (hands[0][0] + hands[1][0]) * 0.5;
-					var orbTargetZ = (hands[0][1] + hands[1][1]) * 0.5;
+					var orbTargetY = (hands[0][1] + hands[1][1]) * 0.5;
 					this.orb.target.x = orbTargetX;
-					this.orb.target.z = orbTargetZ;
+					this.orb.target.y = orbTargetY;
 				}
 			}
 			this.orb.draw( c, this.score ); /**** @andymakesthings - Work from here next ****/
@@ -28,13 +28,13 @@ function Player( ) {
 			draw: function ( c, score ) {
 				c.fillStyle = "rgba(254, 67, 101, 1)";	// Setting up the style for the fill
 				c.beginPath(); // Creating the path for the orb circle
-				c.arc( this.target.x, this.target.z, (this.size * 0.5), 0, Math.PI*2); // Draw a full circle for the orb target
+				c.arc( this.target.x, this.target.y, (this.size * 0.5), 0, Math.PI*2); // Draw a full circle for the orb target
 				c.closePath();
 				c.fill();
 				
 				c.fillStyle = "rgba(254, 67, 101, 0.6)";	// Setting up the style for the fill
 				c.beginPath(); // Creating the path for the orb circle
-				c.arc( this.pos.x, this.pos.z, this.size, 0, Math.PI*2); // Draw a full circle for the orb
+				c.arc( this.pos.x, this.pos.y, this.size, 0, Math.PI*2); // Draw a full circle for the orb
 				c.closePath();
 				c.fill();
 				
