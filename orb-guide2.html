@@ -148,7 +148,7 @@ body {
 		
 		var x = Math.floor((Math.random() * modifiers.maxX) + modifiers.minX);
 		var y = Math.floor((Math.random() * modifiers.maxY) + modifiers.minY);
-		var speed = (x * y * 2) * 0.001;
+		var speed = (x * y * 2) * 0.005;
 		var start = Math.floor((Math.random() * modifiers.maxY) + modifiers.minY); // pick a random x value to start along the top
 		
 		// at the end, create a new interval that spawns a block? Figure out the best way to do this...
@@ -267,7 +267,7 @@ body {
 	}
 		
 	function init() {
-		console.log( "Game start" );
+		
 		
 		animate();
 	}
@@ -275,7 +275,6 @@ body {
 			requestAnimationFrame( animate );
 		
 		if( !game.paused ) {
-			console.log( "Game play" );
 			
 			update( leapData );
 			draw( c );
