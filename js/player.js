@@ -26,15 +26,20 @@ function Player( ) {
 				this.pos.y = y;
 			},
 			draw: function ( c, score ) {
-				c.fillStyle = "#FE4365";	// Setting up the style for the fill
-				c.beginPath();	// Creating the path for the orb circle
-				// Draw a full circle of radius 10 at the hand position
-				c.arc( this.target.x, this.target.z, this.size, 0, Math.PI*2); // ***later this will draw the orb position (which chases the target) ***
+				c.fillStyle = "rgba(254, 67, 101, 1)";	// Setting up the style for the fill
+				c.beginPath(); // Creating the path for the orb circle
+				c.arc( this.target.x, this.target.z, (this.size * 0.5), 0, Math.PI*2); // Draw a full circle for the orb target
+				c.closePath();
+				c.fill();
+				
+				c.fillStyle = "rgba(254, 67, 101, 0.6)";	// Setting up the style for the fill
+				c.beginPath(); // Creating the path for the orb circle
+				c.arc( this.pos.x, this.pos.z, this.size, 0, Math.PI*2); // Draw a full circle for the orb
 				c.closePath();
 				c.fill();
 				
 				c.fillStyle = "#F9CDAD";
-				c.fillText( score, this.target.x, this.target.z );
+				c.fillText( score, this.pos.x, this.pos.z );
 			}
 		},
 	}
