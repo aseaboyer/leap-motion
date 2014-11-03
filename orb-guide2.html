@@ -101,13 +101,15 @@ body {
 	
 	startBTN.addEventListener("click", function(){
 		player.resetScore();
-		game.togglePause( player.score );
+		init( canvas.width, canvas.height );
 		game.block.set( blockData.creation.base, blockData.creation.mod );
+		game.togglePause( player.score );
 	}, false);
 	restartBTN.addEventListener("click", function(){
 		player.resetScore();
-		game.togglePause( player.score );
+		init( canvas.width, canvas.height );
 		game.block.set( blockData.creation.base, blockData.creation.mod );
+		game.togglePause( player.score );
 	}, false);
 	resumeBTN.addEventListener("click", function(){
 		game.togglePause( player.score );
