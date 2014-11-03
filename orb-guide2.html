@@ -249,7 +249,7 @@ body {
 	function draw( canv, data ) {
 		c.clearRect( 0 , 0 , width , height );
 		
-		player.orb.draw( canv ); /**** @andymakesthings - Work from here next ****/
+		player.orb.draw( canv, player.score ); /**** @andymakesthings - Work from here next ****/
 		
 		if( blocks.length > 0) {
 			for( var i=0; i < blocks.length; i++ ){ // draw blocks
