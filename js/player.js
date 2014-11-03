@@ -13,14 +13,15 @@ function Player( ) {
 					this.orb.target.x = orbTargetX;
 					this.orb.target.y = orbTargetY;
 					var moveOrb = this.lerp( this.orb.pos, this.orb.target, (this.orb.speed * timeDelta) );
-					console.log( "move to " + moveOrb );
+					console.log( "move to " );
+					console.log( moveOrb );
 				}
 			}
 			
 		},
 		orb: {
 			speed: 10,
-			size: 70,
+			size: 700,
 			pos: { x: 0, y: 0, z: 0 },
 			target: { x: 0, y: 0, z: 0 },
 			setPosition: function( x, y ) {
@@ -48,12 +49,10 @@ function Player( ) {
 			}
 		},
 		lerp: function (a, b, t) {
-			var len = a.length;
-			if(b.length != len) return;
-
 			var end = [];
-			for(var i = 0; i < len; i++)
+			for(var i = 0; i < len; i++) {
 				end.push(a[i] + t * (b[i] - a[i]));
+			}
 			return end;
 		}
 	}
