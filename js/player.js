@@ -12,7 +12,7 @@ function Player( ) {
 					var orbTargetY = (hands[0][1] + hands[1][1]) * 0.5;
 					this.orb.target.x = orbTargetX;
 					this.orb.target.y = orbTargetY;
-					var moveOrb = lerp( this.orb.pos, this.orb.target, (this.orb.speed * timeDelta) );
+					var moveOrb = this.lerp( this.orb.pos, this.orb.target, (this.orb.speed * timeDelta) );
 				}
 			}
 			
