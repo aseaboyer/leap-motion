@@ -267,9 +267,13 @@ body {
 	}
 		
 	function init() {
-	
+		console.log( "Game start" );
+		
+		animate();
 	}
 	function animate() {
+		console.log( "Game play" );
+		
 		if( !game.paused ) {
 			requestAnimationFrame( animate );
 			
@@ -281,7 +285,7 @@ body {
 	controller.connect();	// Get frames rolling by connecting the controller
 	
 	init();
-	animate();
+	
 	
 </script>
 </body>
