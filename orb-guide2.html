@@ -232,10 +232,10 @@ body {
 		}
 		
 		var hands = [];
-		if( frame.hands.length >= 2 ) {
-			for( var i=0; i < frame.hands.length; i++ ){
-				var hand = frame.hands[i];
-				var handPos = leapToScene( frame , hand.palmPosition );
+		if( data.hands.length >= 2 ) {
+			for( var i=0; i < data.hands.length; i++ ){
+				var hand = data.hands[i];
+				var handPos = leapToScene( data , hand.palmPosition );
 				hands.push( handPos );
 				
 				// Setting up the style for the fill
