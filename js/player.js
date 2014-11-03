@@ -49,6 +49,7 @@ function Player( ) {
 			}
 		},
 		lerp: function (a, b, t) {
+			var len = a.length;
 			var end = [];
 			for(var i = 0; i < len; i++) {
 				end.push(a[i] + t * (b[i] - a[i]));
