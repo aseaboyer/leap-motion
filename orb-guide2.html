@@ -272,10 +272,10 @@ body {
 		animate();
 	}
 	function animate() {
-		console.log( "Game play" );
+			requestAnimationFrame( animate );
 		
 		if( !game.paused ) {
-			requestAnimationFrame( animate );
+			console.log( "Game play" );
 			
 			update( leapData );
 			draw( c );
