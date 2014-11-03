@@ -18,7 +18,7 @@ function Player( ) {
 		},
 		orb: {
 			speed: 10,
-			size: 700,
+			size: 70,
 			pos: { x: 0, y: 0, z: 0 },
 			target: { x: 0, y: 0, z: 0 },
 			setPosition: function( x, y ) {
