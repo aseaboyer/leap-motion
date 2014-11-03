@@ -100,13 +100,11 @@ body {
 	game.pause( player.score );
 	
 	startBTN.addEventListener("click", function(){
-		player.resetScore();
 		init( canvas.width, canvas.height );
 		game.block.set( blockData.creation.base, blockData.creation.mod );
 		game.togglePause( player.score );
 	}, false);
 	restartBTN.addEventListener("click", function(){
-		player.resetScore();
 		init( canvas.width, canvas.height );
 		game.block.set( blockData.creation.base, blockData.creation.mod );
 		game.togglePause( player.score );
@@ -276,8 +274,7 @@ body {
 	}
 		
 	function init( w, h ) {
-		console.log( w +" , "+h );
-		console.log( (w * 0.5) +" , "+(h * 0.5) );
+		player.resetScore();
 		player.orb.setPosition( (w * 0.5), (h * 0.5) );
 		
 		animate();

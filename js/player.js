@@ -37,7 +37,7 @@ function Player( ) {
 				c.arc( this.pos.x, this.pos.y, this.size, 0, Math.PI*2); // Draw a full circle for the orb
 				c.closePath();
 				c.fill();
-				
+				console.log( score );
 				c.fillStyle = "#F9CDAD";
 				c.fillText( score, this.pos.x, this.pos.z );
 			}
