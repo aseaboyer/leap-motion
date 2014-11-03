@@ -26,15 +26,18 @@ function Player( ) {
 				this.pos.y = y;
 			},
 			draw: function ( c, score ) {
-				c.fillStyle = "rgba(254, 67, 101, 1)";	// Setting up the style for the fill
+				// Draw a circle for the orb target
+				c.strokeStyle = "rgba(254, 67, 101, 1)";	// Setting up the style for the fill
 				c.beginPath(); // Creating the path for the orb circle
-				c.arc( this.target.x, this.target.y, (this.size * 0.5), 0, Math.PI*2); // Draw a full circle for the orb target
+				c.lineWidth = 2;
+				c.arc( this.target.x, this.target.y, this.size , 0, Math.PI*2); 
 				c.closePath();
-				c.fill();
+				c.stroke();
 				
-				c.fillStyle = "rgba(254, 67, 101, 0.6)";	// Setting up the style for the fill
-				c.beginPath(); // Creating the path for the orb circle
-				c.arc( this.pos.x, this.pos.y, this.size, 0, Math.PI*2); // Draw a full circle for the orb
+				// Draw the orb
+				c.fillStyle = "rgba(254, 67, 101, 0.6)";
+				c.beginPath();
+				c.arc( this.pos.x, this.pos.y, this.size, 0, Math.PI*2); 
 				c.closePath();
 				c.fill();
 				
