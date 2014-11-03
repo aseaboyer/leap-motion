@@ -4,7 +4,7 @@ function Player( ) {
 		resetScore: function ( ) {
 			this.score = 0;
 		},
-		update: function ( c, hands ) {
+		update: function ( c, hands, timeDelta ) {
 			var und;
 			if( hands.length >= 2 ) {
 				if( hands[0] != und && hands[1] != und ) {
@@ -12,6 +12,7 @@ function Player( ) {
 					var orbTargetY = (hands[0][1] + hands[1][1]) * 0.5;
 					this.orb.target.x = orbTargetX;
 					this.orb.target.y = orbTargetY;
+					var moveOrb = lerp( this.orb.pos, this.orb.target, (this.orb.speed * timeDelta) );
 				}
 			}
 			
