@@ -39,7 +39,7 @@ function Player( ) {
 				c.fill();
 				
 				c.fillStyle = "#F9CDAD";
-				c.fillText( score, this.pos.x, this.pos.z );
+				c.fillText( score, this.pos.x, this.pos.y );
 			}
 		},
 	}
