@@ -28,7 +28,7 @@ function Player( ) {
 			},
 			draw: function ( c, score ) {
 				// Draw a circle for the orb target
-				c.strokeStyle = "rgba(254, 67, 101, 1)";	// Setting up the style for the fill
+				c.strokeStyle = "rgba(254, 67, 101, 0.65)";	// Setting up the style for the fill
 				c.beginPath(); // Creating the path for the orb circle
 				c.lineWidth = 2;
 				c.arc( this.target.x, this.target.y, this.size , 0, Math.PI*2); 
