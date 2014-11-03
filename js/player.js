@@ -29,12 +29,7 @@ function Player( ) {
 				this.pos.y = y;
 			},
 			draw: function ( c, score ) {
-<<<<<<< HEAD
-				// Draw a circle for the orb target
 				c.strokeStyle = "rgba(254, 67, 101, 0.65)";	// Setting up the style for the fill
-=======
-				c.fillStyle = "rgba(254, 67, 101, 1)";	// Setting up the style for the fill
->>>>>>> parent of 14fc8d9... represent the orb target with an empty circle
 				c.beginPath(); // Creating the path for the orb circle
 				c.arc( this.target.x, this.target.y, (this.size * 0.5), 0, Math.PI*2); // Draw a full circle for the orb target
 				c.closePath();
