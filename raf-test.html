@@ -123,14 +123,18 @@ body {
 	var leapData = new Array();
 	controller.on( 'frame' , function( frame ){ // Tells the controller what to do every time it sees a frame
 		//console.log( frame ); // update handsPosition var
-		leapData = frame.hands;
+		leapData = frame;
 	});
 		
 	function update( data ) {
 		var und;
-		if( data.length >= 2 ) {
-			var hArray = [ data[0].stabilizedPalmPosition, data[1].stabilizedPalmPosition
-			console.log( hArray[0] + ' - ' + hArray[1] );
+		if( data.hands.length >= 2 ) {
+			var hands = new Array();
+			hands.push = leapToScene( data , data.hands[0].palmPosition );
+			hands.push = leapToScene( data , data.hands[1].palmPosition );
+		/*	var handPos = leapToScene( data , data.hand.palmPosition );
+			var f = [ data.hands[0].stabilizedPalmPosition, data.hands[1].stabilizedPalmPosition
+			console.log( f[0] + ' - ' + f[1] );*/
 		}
 	}
 		
