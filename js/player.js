@@ -45,5 +45,14 @@ function Player( ) {
 				c.fillText( score, this.pos.x, this.pos.y );
 			}
 		},
+		lerp: function (a, b, t) {
+			var len = a.length;
+			if(b.length != len) return;
+
+			var end = [];
+			for(var i = 0; i < len; i++)
+				end.push(a[i] + t * (b[i] - a[i]));
+			return end;
+		}
 	}
 }
