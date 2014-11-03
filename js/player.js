@@ -12,9 +12,6 @@ function Player( ) {
 					var orbTargetY = (hands[0][1] + hands[1][1]) * 0.5;
 					this.orb.target.x = orbTargetX;
 					this.orb.target.y = orbTargetY;
-				//	var moveOrb = this.lerp( this.orb.pos, this.orb.target, (this.orb.speed * timeDelta) );
-				//	console.log( "move to " );
-				//	console.log( moveOrb );
 				}
 			}
 			
@@ -31,7 +28,7 @@ function Player( ) {
 			draw: function ( c, score ) {
 				c.strokeStyle = "rgba(254, 67, 101, 0.65)";	// Setting up the style for the fill
 				c.beginPath(); // Creating the path for the orb circle
-				c.arc( this.target.x, this.target.y, (this.size * 0.5), 0, Math.PI*2); // Draw a full circle for the orb target
+				c.arc( this.target.x, this.target.y, this.size, 0, Math.PI*2); // Draw a full circle for the orb target
 				c.closePath();
 				c.stroke();
 				
