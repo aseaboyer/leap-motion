@@ -95,7 +95,6 @@ body {
 	var tutorialBTN = document.getElementById( "tutorial" );
 	
 	var player = new Player();
-	player.orb.setPosition( (width/2), (height/2) );
 	var game = new GameInfo( uiLayer, startBTN, restartBTN, resumeBTN );
 	//game.time.set();
 	game.pause( player.score );
@@ -266,8 +265,8 @@ body {
 	
 	}
 		
-	function init() {
-		
+	function init( w, h ) {
+		player.orb.setPosition( (w * 0.5), (h * 0.5) );
 		
 		animate();
 	}
@@ -283,7 +282,7 @@ body {
 	
 	controller.connect();	// Get frames rolling by connecting the controller
 	
-	init();
+	init( canvas.width, canvas.height );
 	
 	
 </script>
