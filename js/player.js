@@ -33,7 +33,7 @@ function Player( ) {
 				c.beginPath(); // Creating the path for the orb circle
 				c.arc( this.target.x, this.target.y, (this.size * 0.5), 0, Math.PI*2); // Draw a full circle for the orb target
 				c.closePath();
-				c.fill();
+				c.stroke();
 				
 				c.fillStyle = "rgba(254, 67, 101, 0.6)";	// Setting up the style for the fill
 				c.beginPath(); // Creating the path for the orb circle
