@@ -14,7 +14,7 @@ function Player( ) {
 					this.orb.target.y = orbTargetY;
 				}
 			}
-			this.orb.draw( c, this.score ); /**** @andymakesthings - Work from here next ****/
+			
 		},
 		orb: {
 			speed: 10,
@@ -25,7 +25,7 @@ function Player( ) {
 				this.pos.x = x;
 				this.pos.y = y;
 			},
-			draw: function ( c, score ) {
+			draw: function ( c ) {
 				c.fillStyle = "rgba(254, 67, 101, 1)";	// Setting up the style for the fill
 				c.beginPath(); // Creating the path for the orb circle
 				c.arc( this.target.x, this.target.y, (this.size * 0.5), 0, Math.PI*2); // Draw a full circle for the orb target
@@ -39,7 +39,7 @@ function Player( ) {
 				c.fill();
 				
 				c.fillStyle = "#F9CDAD";
-				c.fillText( score, this.pos.x, this.pos.z );
+				c.fillText( this.score, this.pos.x, this.pos.z );
 			}
 		},
 	}
