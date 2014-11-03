@@ -126,6 +126,18 @@ body {
 		leapData = frame.hands;
 	});
 		
+	function update( data ) {
+		var und;
+		if( data.length >= 2 ) {
+			var hArray = [ data[0].stabilizedPalmPosition, data[1].stabilizedPalmPosition
+			console.log( hArray[0] + ' - ' + hArray[1] );
+		}
+	}
+		
+	function draw( canv ) {
+	
+	}
+		
 	function init() {
 	
 	}
@@ -133,14 +145,15 @@ body {
 		
 		requestAnimationFrame( animate );
 		
-		//console.log( leapData );
+		update( leapData );
+		draw( c );
 	}
-	
-	init();
-	animate();
 
 	// Get frames rolling by connecting the controller
 	controller.connect();
+	
+	init();
+	animate();
 		
 </script>
 </body>
