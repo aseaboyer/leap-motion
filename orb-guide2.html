@@ -233,23 +233,8 @@ body {
 		var hands = [];
 		if( data.hands.length >= 2 ) {
 			for( var i=0; i < data.hands.length; i++ ){
-				var hand = data.hands[i];
-				var handPos = leapToScene( data , hand.palmPosition );
-				hands.push( handPos );
-				
-				// Setting up the style for the fill
-				c.fillStyle = "#FC9D9A";
-				// Creating the path for the hand circle
-				c.beginPath();
-				// Draw a full circle of radius 10 at the hand position
-				c.arc(handPos[0], handPos[1], 40, 0, Math.PI*2);
-
-				c.closePath();
-				c.fill();
+				hands.push( leapToScene( data, data.hands[i].palmPosition ) );
 			}
-			
-			//console.log( hands );
-			//player.update( c, hands[0], hands[1] );
 			
 		}
 		
@@ -261,7 +246,7 @@ body {
 		}
 	}
 		
-	function draw( canv ) {
+	function draw( canv, data ) {
 		c.clearRect( 0 , 0 , width , height );
 		
 		player.orb.draw( canv ); /**** @andymakesthings - Work from here next ****/
@@ -270,6 +255,23 @@ body {
 			for( var i=0; i < blocks.length; i++ ){ // draw blocks
 				blocks[i].draw( canv );
 			}
+		}
+		
+		var hands = [];
+		if( data.hands.length >= 2 ) {
+			for( var i=0; i < data.hands.length; i++ ){
+				var hand = data.hands[i];
+				var handPos = leapToScene( data , hand.palmPosition );
+				hands.push( handPos );
+				
+				canv.fillStyle = "#FC9D9A"; // Setting up the style for the fill
+				canv.beginPath(); // Creating the path for the hand circle
+				canv.arc(hands[0], hands[1], 40, 0, Math.PI*2); // Draw a full circle of radius 10 at the hand position
+
+				canv.closePath();
+				canv.fill();
+			}
+			
 		}
 	}
 		
@@ -286,7 +288,7 @@ body {
 		if( !game.paused ) {
 			
 			update( leapData );
-			draw( c );
+			draw( c, leapData );
 		}
 	}
 	
