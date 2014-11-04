@@ -16,7 +16,8 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 				this.bump();
 			},
 			bump: function() {
-				this.next += new Date() + (this.base); // @andymakesthings - too tired, pick up here tomorrow
+				this.next += new Date( this.next + this.base ); // @andymakesthings - too tired, pick up here tomorrow
+				//new Date(oldDateObj.getTime() + diff*60000);
 				console.log( "This date = " + new Date() + " next on " + this.next + " with a base of " + this.base );
 			},
 		},
