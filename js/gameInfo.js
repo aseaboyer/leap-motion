@@ -5,11 +5,6 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 		restartBTN: rstbtn,
 		resumeBTN: rsmbtn,
 		paused: true,
-		blockCreation: {
-			interval: 100, // seconds
-			reset: 10,
-			last: Date.now(),
-		},
 		block: {
 			next: 0, // when we create the next block
 			base: 0, // keep track of the last modified creation
@@ -22,6 +17,7 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 			},
 			bump: function() {
 				this.next += new Date() + (this.base); // @andymakesthings - too tired, pick up here tomorrow
+				console.log( "This date = " + new Date() + " next on " + this.next );
 			},
 		},
 		time: {
@@ -42,11 +38,8 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 		},
 		update: function ( ) {
 			this.time.update();
-			this.blockCreation.interval -= this.time.delta;
 			
-			
-			if( this.time.current >= this.block.next) {
-				// @andymakesthings - check if we are past this.block.next, if so, return false
+			if( this.time.current >= this.block.next) { // @andymakesthings - check if we are past this.block.next, if so, return false
 				this.block.bump();
 				return true;
 			}
