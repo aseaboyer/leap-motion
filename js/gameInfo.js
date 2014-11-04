@@ -21,7 +21,7 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 				this.bump();
 			},
 			bump: function() {
-				this.next += new Date() + (this.base) ); // @andymakesthings - too tired, pick up here tomorrow
+				this.next += new Date() + (this.base); // @andymakesthings - too tired, pick up here tomorrow
 			},
 		},
 		time: {
