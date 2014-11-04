@@ -13,6 +13,8 @@ function Player( ) {
 					this.orb.target.x = orbTargetX;
 					this.orb.target.y = orbTargetY;
 				}
+				console.log( this.orb.speed * timeDelta )
+				var moveOrb = this.lerp( this.orb.pos, this.orb.target, (this.orb.speed * timeDelta) );
 			}
 			
 		},
@@ -42,6 +44,9 @@ function Player( ) {
 				c.fillStyle = "#F9CDAD";
 				c.fillText( score, this.pos.x, this.pos.y );
 			}
+		},
+		lerp: function(a, b, u) {
+			return (1 - u) * a + u * b;
 		}
 	}
 }
