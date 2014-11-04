@@ -20,7 +20,7 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 				this.bump();
 			},
 			bump: function() {
-				this.next = new Date() + (base - (base * this.mod) ); // @andymakesthings - too tired, pick up here tomorrow
+				this.next = new Date() + (this.base - (this.base * this.mod) ); // @andymakesthings - too tired, pick up here tomorrow
 			},
 		},
 		time: {
