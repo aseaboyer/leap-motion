@@ -11,13 +11,12 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 			mod: 0, // the modifier we reduce by each time a block is created
 			set: function ( base, mod ) {
 				this.base = base;
-				this.next = base;
+				this.next = new Date();
 				this.mod = mod;
-				this.bump();
 			},
 			bump: function() {
 				var current = new Date().getTime();
-				this.next = (  current + (this.base*100) ); // @andymakesthings - too tired, pick up here tomorrow
+				this.next = (  current + this.base ); // @andymakesthings - too tired, pick up here tomorrow
 				
 				//new Date(oldDateObj.getTime() + diff*60000);
 				console.log( "This date = " + current + " next on " + this.next + " with a base of " + this.base );
