@@ -49,10 +49,11 @@ function Player( ) {
 		lerp: function( a, b, t ) {
 			var len = a.length;
 			if(b.length != len) return;
-
+			console.log( len );
 			var x = [];
-			for(var i = 0; i < len; i++)
+			for(var i = 0; i < len; i++) {
 				x.push(a[i] + t * (b[i] - a[i]));
+			}
 			return x;
 		}
 	}
