@@ -17,7 +17,7 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 			},
 			bump: function() {
 				this.next += new Date() + (this.base); // @andymakesthings - too tired, pick up here tomorrow
-				console.log( "This date = " + new Date() + " next on " + this.next );
+				console.log( "This date = " + new Date() + " next on " + this.next + " with a base of " + this.base );
 			},
 		},
 		time: {
