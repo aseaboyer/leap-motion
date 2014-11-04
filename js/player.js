@@ -13,10 +13,11 @@ function Player( ) {
 					this.orb.target.x = orbTargetX;
 					this.orb.target.y = orbTargetY;
 				}
-				console.log( this.orb.speed )
-				var moveOrb = this.lerp( this.orb.pos, this.orb.target, (this.orb.speed) );
+				
 			}
 			
+			var moveOrb = this.lerp( this.orb.pos, this.orb.target, (this.orb.speed) );
+			console.log( moveOrb )
 		},
 		orb: {
 			speed: 10,
