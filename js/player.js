@@ -16,7 +16,7 @@ function Player( ) {
 				
 			}
 			
-			var moveOrb = this.lerp( this.orb.pos, this.orb.target, this.orb.speed);
+			var moveOrb = Vector.lerp( this.orb.pos, this.orb.target, this.orb.speed);
 			console.log( moveOrb )
 		},
 		orb: {
@@ -45,9 +45,6 @@ function Player( ) {
 				c.fillStyle = "#F9CDAD";
 				c.fillText( score, this.pos.x, this.pos.y );
 			}
-		},
-		lerp: function(a, b, u) {
-			return (1 - u) * a + u * b;
 		}
 	}
 }
