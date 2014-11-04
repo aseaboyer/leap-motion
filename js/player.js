@@ -18,7 +18,6 @@ function Player( ) {
 			
 			var moveOrb = this.lerp( this.orb.pos, this.orb.target, (this.orb.speed * timeDelta) );
 			this.orb.setPosition( moveOrb.x, moveOrb.y );
-			/* This works amazingly well! However, it causes our orb to squash?! */
 		},
 		orb: {
 			speed: 10,

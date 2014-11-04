@@ -16,10 +16,11 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 			mod: 0, // the modifier we reduce by each time a block is created
 			set: function ( base, mod ) {
 				this.base = base;
-				this.next = new Date() - (base * mod); // @andymakesthings - too tired, pick up here tomorrow
+				this.mod = mod;
+				this.bump();
 			},
 			bump: function() {
-			
+				this.next = new Date() + (base - (base * this.mod) ); // @andymakesthings - too tired, pick up here tomorrow
 			},
 		},
 		time: {
@@ -42,13 +43,15 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 			this.time.update();
 			this.blockCreation.interval -= this.time.delta;
 			
-			/*
+			
 			if( this.time.current >= this.block.next) {
 				// @andymakesthings - check if we are past this.block.next, if so, return false
 				// @andymakesthings - this will be overloaded quickly, maybe we need to return an object
+				this.block.bump();
+				
+				return true;
 			}
-			*/
-			return true;
+			return false;
 		},
 		pause: function ( score ) {
 			this.paused = true;
