@@ -16,10 +16,11 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 				this.bump();
 			},
 			bump: function() {
-				this.next = ( new Date().getTime() + this.base ); // @andymakesthings - too tired, pick up here tomorrow
+				var current = new Date().getTime();
+				this.next = (  current + (this.base*100) ); // @andymakesthings - too tired, pick up here tomorrow
 				
 				//new Date(oldDateObj.getTime() + diff*60000);
-				console.log( "This date = " + new Date() + " next on " + this.next + " with a base of " + this.base );
+				console.log( "This date = " + current + " next on " + this.next + " with a base of " + this.base );
 			},
 		},
 		time: {
