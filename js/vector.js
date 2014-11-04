@@ -130,10 +130,7 @@ Vector.max = function(a, b) {
   return new Vector(Math.max(a.x, b.x), Math.max(a.y, b.y), Math.max(a.z, b.z));
 };
 Vector.lerp = function(a, b, fraction) {
-  return b.
-  subtract(a).
-  multiply(fraction).
-  add(a);
+  return b.subtract(a).multiply(fraction).add(a);
 };
 Vector.fromArray = function(a) {
   return new Vector(a[0], a[1], a[2]);
