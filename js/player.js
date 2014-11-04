@@ -16,7 +16,7 @@ function Player( ) {
 				
 			}
 			
-			var moveOrb = this.lerp( this.orb.pos, this.orb.target, this.orb.speed);
+			var moveOrb = this.lerp( this.orb.pos, this.orb.target, (this.orb.speed * timeDelta) );
 			console.log( moveOrb )
 		},
 		orb: {
