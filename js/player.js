@@ -47,14 +47,10 @@ function Player( ) {
 			}
 		},
 		lerp: function( a, b, t ) {
-			var len = a.length;
-			if(b.length != len) return;
-			console.log( len );
-			var x = [];
-			for(var i = 0; i < len; i++) {
-				x.push(a[i] + t * (b[i] - a[i]));
-			}
-			return x;
+			return {
+				x: a.x + t * (b.x - a.x),
+				y: a.y + t * (b.y - a.y),
+			};
 		}
 	}
 }
