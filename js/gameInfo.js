@@ -13,6 +13,7 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 				this.base = base;
 				this.next = new Date().getTime();
 				this.mod = mod;
+				console.log( this );
 			},
 			bump: function() {
 				var current = new Date().getTime();
