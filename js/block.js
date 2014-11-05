@@ -9,6 +9,7 @@ function Block( uic, stbtn, rstbtn, rsmbtn ) {
 			this.speed = speed;
 			this.position.x = xPos;
 			this.position.y = -(dimsY + 50); // 50px bump above the fold
+			this.position.y = -100; // 50px bump above the fold
 			
 			console.log( "Built" );
 			console.log( this );
