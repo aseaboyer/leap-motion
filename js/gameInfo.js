@@ -11,29 +11,28 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 			mod: 0, // the modifier we reduce by each time a block is created
 			set: function ( base, mod ) {
 				this.base = base;
-				this.next = new Date();
+				this.next = new Date().getTime();
 				this.mod = mod;
 			},
 			bump: function() {
 				var current = new Date().getTime();
-				this.next = (  current + this.base ); // @andymakesthings - too tired, pick up here tomorrow
+				this.next = (  current + this.base );
 				
-				//new Date(oldDateObj.getTime() + diff*60000);
 				console.log( "This date = " + current + " next on " + this.next + " with a base of " + this.base );
 			},
 		},
 		time: {
-			last: Date.now(),
-			current: Date.now(),
+			last: new Date().getTime(),
+			current: new Date().getTime(),
 			delta: 0,
 			update: function ( ) {
-				var currentTime = Date.now();
+				var currentTime = new Date().getTime(),
 				this.delta = (currentTime - this.current) * 0.001;
 				this.last = this.current;
 				this.current = currentTime;
 			},
 			set: function ( ) {
-				var currentTime = Date.now();
+				var currentTime = new Date().getTime(),
 				this.last = currentTime;
 				this.current = currentTime;
 			}
