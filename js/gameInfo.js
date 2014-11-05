@@ -26,13 +26,13 @@ function GameInfo( uic, stbtn, rstbtn, rsmbtn ) {
 			current: new Date().getTime(),
 			delta: 0,
 			update: function ( ) {
-				var currentTime = new Date().getTime(),
-				this.delta = (currentTime - this.current) * 0.001;
+				var currentTime = new Date().getTime();
+				this.delta = ( currentTime - this.current ) * 0.001;
 				this.last = this.current;
 				this.current = currentTime;
 			},
 			set: function ( ) {
-				var currentTime = new Date().getTime(),
+				var currentTime = new Date().getTime();
 				this.last = currentTime;
 				this.current = currentTime;
 			}
