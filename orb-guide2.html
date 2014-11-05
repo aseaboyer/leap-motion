@@ -204,7 +204,6 @@ body {
 	// Creates our Leap Controller
 	var controller = new Leap.Controller();
 	var blocks = [];
-	blocks.push( spawnBlock() ); // create a block
 	var leapData = new Array();
 	
 	// Tells the controller what to do every time it sees a frame - Functionally the Game Update function
@@ -276,7 +275,9 @@ body {
 		
 	function init( w, h ) {
 		player.resetScore();
+		
 		player.orb.setPosition( (w * 0.5), (h * 0.5) );
+		blocks.push( spawnBlock() ); // create a block
 		
 		animate();
 	}
